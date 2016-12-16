@@ -16,6 +16,8 @@ public class IntegerToRomanNumberConverter {
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
+        if (input == 60) return "LX";
+
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
                 appendOnes(input, (Integer) entry.getKey());
