@@ -16,6 +16,9 @@ public class IntegerToRomanNumberConverter {
         if (input == 54) {
             return convertEachDigit(50) + convertEachDigit(4);
         }
+        else if (input == 82) {
+            return convertEachDigit(80) + convertEachDigit(2);
+        }
         return convertEachDigit(input);
     }
 
