@@ -49,7 +49,7 @@ public class IntegerToRomanNumberConverter {
                     sb.append("X");
                 }
             }
-        } else {
+        } else if (input > 1){
             if (input > integerNumber) {
                 sb.append(romanRepresentationOf(integerNumber));
                 for (int i = 0; i < (input - integerNumber) / 1; i++) {
