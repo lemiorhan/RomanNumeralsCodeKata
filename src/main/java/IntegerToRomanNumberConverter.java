@@ -30,12 +30,12 @@ public class IntegerToRomanNumberConverter {
     }
 
     public String appendFollowingNumber(int input) {
-        if (input == 4) return "IV";
-        else if (input == 9) return "IX";
-        else if (input == 40) return "XL";
-        else if (input == 90) return "XC";
-        else if (input == 400) return "CD";
-        else if (input == 900) return "CM";
+        if (input == 5-1) return "IV";
+        else if (input == 10-1) return "IX";
+        else if (input == 50-10) return "XL";
+        else if (input == 100-10) return "XC";
+        else if (input == 500-100) return "CD";
+        else if (input == 1000-100) return "CM";
         return null;
     }
 
