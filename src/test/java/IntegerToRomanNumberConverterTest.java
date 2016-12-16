@@ -116,33 +116,7 @@ public class IntegerToRomanNumberConverterTest {
         assertEquals("XCIX", converter.convert(99));
     }
 
-    @Test
-    public void splitter() throws Exception {
-        assertEquals(Arrays.asList(80, 2), split(82));
-        assertEquals(Arrays.asList(50, 4), split(54));
-        assertEquals(Arrays.asList(90, 9), split(99));
-        assertEquals(Arrays.asList(100, 50, 6), split(156));
-        assertEquals(Arrays.asList(300, 20, 8), split(328));
-        assertEquals(Arrays.asList(1000, 900, 70, 9), split(1979));
 
 
-    }
 
-    private List<Integer> split(int input) {
-        List<Integer> list = new ArrayList<>();
-        if (input - (input % 1000) > 0) {
-            list.add(input - (input % 1000));
-            input = input % 1000;
-        }
-        if (input - (input % 100) > 0) {
-            list.add(input - (input % 100));
-            input = input % 100;
-        }
-        if (input - (input % 10) > 0) {
-            list.add(input - (input % 10));
-            input = input % 10;
-        }
-        list.add(input - (input % 1));
-        return list;
-    }
 }
