@@ -13,8 +13,8 @@ public class IntegerToRomanNumberConverter {
     public String convert(int input) {
         sb = new StringBuilder();
 
-        if (mainNumberMapping.containsKey(input))
-            return mainNumberMapping.get(input);
+        if (isMainNumber(input))
+            return romanRepresentationOf(input);
 
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
@@ -26,9 +26,17 @@ public class IntegerToRomanNumberConverter {
         return sb.toString();
     }
 
+    public String romanRepresentationOf(int input) {
+        return mainNumberMapping.get(input);
+    }
+
+    public boolean isMainNumber(int input) {
+        return mainNumberMapping.containsKey(input);
+    }
+
     public void appendOnes(int input, int integerNumber) {
         if (input > integerNumber) {
-            sb.append(mainNumberMapping.get(integerNumber));
+            sb.append(romanRepresentationOf(integerNumber));
             for (int i = 0; i < input - integerNumber; i++) {
                 sb.append("I");
             }
