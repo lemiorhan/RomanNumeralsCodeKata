@@ -110,10 +110,15 @@ public class IntegerToRomanNumberConverterTest {
         assertEquals("LXXXII", converter.convert(82));
     }
 
-    @Ignore
     @Test
     public void shouldConvert_99() throws Exception {
-        assertEquals("XCIX", converter.convert(99));
+
+        DecimalDigitsSplitter decimalDigitsSplitter = new DecimalDigitsSplitter();
+        StringBuilder sb = new StringBuilder();
+        for (Integer digit : decimalDigitsSplitter.split(99)) {
+            if (digit != 0) sb.append(converter.convert(digit));
+        }
+        assertEquals("XCIX", sb.toString());
     }
 
 
