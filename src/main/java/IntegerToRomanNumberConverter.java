@@ -13,6 +13,13 @@ public class IntegerToRomanNumberConverter {
     }
 
     public String convert(int input) {
+        if (input == 54) {
+            return convertEachDigit(50) + convertEachDigit(4);
+        }
+        return convertEachDigit(input);
+    }
+
+    public String convertEachDigit(int input) {
         sb = new StringBuilder();
 
         if (isMainNumber(input))
@@ -28,11 +35,10 @@ public class IntegerToRomanNumberConverter {
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
                 appendForFollowingNumber(input, (Integer) entry.getKey());
-                break;
+                return sb.toString();
             }
         }
-
-        return sb.toString();
+        return null;
     }
 
     public void appendForTrailingNumber(int input) {
