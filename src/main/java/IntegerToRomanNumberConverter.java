@@ -17,18 +17,18 @@ public class IntegerToRomanNumberConverter {
             return mainNumberMapping.get(input);
 
         if (input > 10) {
-            appendOnes(input, mainNumberMapping.get(10), 10);
+            appendOnes(input, 10);
         } else if (input > 5) {
-            appendOnes(input, mainNumberMapping.get(5), 5);
+            appendOnes(input, 5);
         } else {
-            appendOnes(input, mainNumberMapping.get(1), 1);
+            appendOnes(input, 1);
         }
         return sb.toString();
     }
 
-    public void appendOnes(int input, String romanNumber, int integerNumber) {
+    public void appendOnes(int input, int integerNumber) {
         if (input > 5) {
-            sb.append(romanNumber);
+            sb.append(mainNumberMapping.get(integerNumber));
             for (int i = 0; i < input - integerNumber; i++) {
                 sb.append("I");
             }
