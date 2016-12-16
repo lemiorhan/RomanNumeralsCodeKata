@@ -15,6 +15,7 @@ public class IntegerToRomanNumberConverterTest {
     @Before
     public void doBefore() {
         Map<Integer, String> mainNumberMapping = new LinkedHashMap<Integer, String>() {{
+            put(100, "C");
             put(50, "L");
             put(10, "X");
             put(5, "V");
@@ -52,9 +53,16 @@ public class IntegerToRomanNumberConverterTest {
     }
 
     @Test
-    public void shouldConvertSixySeventy() throws Exception {
+    public void shouldConvertSixySeventyEighty() throws Exception {
         assertEquals("LX", converter.convert(60));
         assertEquals("LXX", converter.convert(70));
         assertEquals("LXXX", converter.convert(80));
+    }
+
+    @Test
+    public void shouldConvertElevenHundredTwelveHundredThirteenHundred() throws Exception {
+        assertEquals("CX", converter.convert(110));
+        assertEquals("CXX", converter.convert(120));
+        assertEquals("CXXX", converter.convert(130));
     }
 }
