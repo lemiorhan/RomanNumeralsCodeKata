@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Map;
 
 public class IntegerToRomanNumberConverter {
@@ -18,7 +17,7 @@ public class IntegerToRomanNumberConverter {
 
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
-                appendOnes(input, (Integer) entry.getKey());
+                appendForTrailingNumber(input, (Integer) entry.getKey());
                 break;
             }
         }
@@ -34,26 +33,26 @@ public class IntegerToRomanNumberConverter {
         return mainNumberMapping.containsKey(input);
     }
 
-    public void appendOnes(int input, int integerNumber) {
+    public void appendForTrailingNumber(int input, int integerNumber) {
         if (input > 500) {
             if (input > integerNumber) {
                 sb.append(romanRepresentationOf(integerNumber));
                 for (int i = 0; i < (input - integerNumber) / 100; i++) {
-                    sb.append("C");
+                    sb.append(romanRepresentationOf(100));
                 }
             }
         } else if (input > 50) {
             if (input > integerNumber) {
                 sb.append(romanRepresentationOf(integerNumber));
                 for (int i = 0; i < (input - integerNumber) / 10; i++) {
-                    sb.append("X");
+                    sb.append(romanRepresentationOf(10));
                 }
             }
         } else if (input > 1){
             if (input > integerNumber) {
                 sb.append(romanRepresentationOf(integerNumber));
                 for (int i = 0; i < (input - integerNumber) / 1; i++) {
-                    sb.append("I");
+                    sb.append(romanRepresentationOf(1));
                 }
             }
         }
