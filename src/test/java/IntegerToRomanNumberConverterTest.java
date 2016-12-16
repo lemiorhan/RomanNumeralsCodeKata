@@ -13,10 +13,9 @@ public class IntegerToRomanNumberConverterTest {
     @Before
     public void doBefore() {
         Map<Integer, String> mainNumberMapping = new HashMap<Integer, String>() {{
+            put(1, "I");
             put(5, "V");
             put(10, "X");
-            put(50, "L");
-            put(100, "C");
         }};
 
         converter = new IntegerToRomanNumberConverter(mainNumberMapping);
@@ -33,8 +32,6 @@ public class IntegerToRomanNumberConverterTest {
     public void shouldConvertMainNumber() throws Exception {
         assertEquals("V", converter.convert(5));
         assertEquals("X", converter.convert(10));
-        assertEquals("L", converter.convert(50));
-        assertEquals("C", converter.convert(100));
     }
 
     @Test

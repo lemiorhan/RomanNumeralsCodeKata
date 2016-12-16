@@ -27,16 +27,10 @@ public class IntegerToRomanNumberConverter {
     }
 
     public void appendOnes(int input, int integerNumber) {
-        if (input > 5) {
-            sb.append(mainNumberMapping.get(integerNumber));
-            for (int i = 0; i < input - integerNumber; i++) {
-                sb.append("I");
-            }
-        } else {
-            for (int i = 0; i < input; i++) {
-                sb.append("I");
-            }
-
+        sb.append(mainNumberMapping.get(integerNumber));
+        for (int i = 0; i < input - integerNumber; i++) {
+            sb.append("I");
         }
+
     }
 }
