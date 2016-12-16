@@ -18,9 +18,11 @@ public class IntegerToRomanNumberConverter {
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
-        if (isTrailingNumber(input)) {
-            appendForTrailingNumber(input);
-            return sb.toString();
+        for (Map.Entry entry : divisorMap.entrySet()) {
+            if (input == (int) entry.getKey() - (int) entry.getValue()) {
+                appendForTrailingNumber(input);
+                return sb.toString();
+            }
         }
 
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
@@ -31,13 +33,6 @@ public class IntegerToRomanNumberConverter {
         }
 
         return sb.toString();
-    }
-
-    private boolean isTrailingNumber(int input) {
-        for (Map.Entry entry : divisorMap.entrySet()) {
-            if (input == (int)entry.getKey()-(int)entry.getValue()) return true;
-        }
-        return false;
     }
 
     public void appendForTrailingNumber(int input) {
