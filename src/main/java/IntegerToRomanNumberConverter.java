@@ -5,9 +5,11 @@ public class IntegerToRomanNumberConverter {
 
     Map<Integer, String> mainNumberMapping;
     private StringBuilder sb;
+    private Map<Integer, Integer> divisorMap;
 
-    public IntegerToRomanNumberConverter(Map<Integer, String> mainNumberMapping) {
+    public IntegerToRomanNumberConverter(Map<Integer, String> mainNumberMapping, Map<Integer, Integer> divisorMap) {
         this.mainNumberMapping = mainNumberMapping;
+        this.divisorMap = divisorMap;
     }
 
     public String convert(int input) {
@@ -32,20 +34,13 @@ public class IntegerToRomanNumberConverter {
     }
 
     private boolean isTrailingNumber(int input) {
-        return (input == 4 || input == 9 || input == 40 || input == 90 || input == 400 || input == 900);
+        for (Map.Entry entry : divisorMap.entrySet()) {
+            if (input == (int)entry.getKey()-(int)entry.getValue()) return true;
+        }
+        return false;
     }
 
     public void appendForTrailingNumber(int input) {
-        Map<Integer, Integer> divisorMap = new LinkedHashMap<Integer, Integer>() {{
-            put(1000, 100);
-            put(500, 100);
-            put(100, 10);
-            put(50, 10);
-            put(10, 1);
-            put(5, 1);
-            put(1, 1);
-        }};
-
         for (Map.Entry entry : divisorMap.entrySet()) {
             if (input == (int) entry.getKey() - (int) entry.getValue()) {
                 sb.append(mainNumberMapping.get(entry.getValue())).append(mainNumberMapping.get(entry.getKey()));

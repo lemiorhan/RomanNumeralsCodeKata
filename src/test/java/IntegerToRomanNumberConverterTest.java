@@ -22,7 +22,17 @@ public class IntegerToRomanNumberConverterTest {
             put(1, "I");
         }};
 
-        converter = new IntegerToRomanNumberConverter(mainNumberMapping);
+        Map<Integer, Integer> divisorMap = new LinkedHashMap<Integer, Integer>() {{
+            put(1000, 100);
+            put(500, 100);
+            put(100, 10);
+            put(50, 10);
+            put(10, 1);
+            put(5, 1);
+            put(1, 1);
+        }};
+
+        converter = new IntegerToRomanNumberConverter(mainNumberMapping, divisorMap);
     }
 
     @Test
