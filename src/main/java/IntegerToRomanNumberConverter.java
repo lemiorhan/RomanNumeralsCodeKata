@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class IntegerToRomanNumberConverter {
@@ -16,12 +16,14 @@ public class IntegerToRomanNumberConverter {
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
-        String x = appendFollowingNumber(input);
-        if (x != null) return x;
+        if (isTrailingNumber(input)) {
+            appendForTrailingNumber(input);
+            return sb.toString();
+        }
 
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
-                appendForTrailingNumber(input, (Integer) entry.getKey());
+                appendForFollowingNumber(input, (Integer) entry.getKey());
                 break;
             }
         }
@@ -29,14 +31,27 @@ public class IntegerToRomanNumberConverter {
         return sb.toString();
     }
 
-    public String appendFollowingNumber(int input) {
-        if (input == 5-1) return "IV";
-        else if (input == 10-1) return "IX";
-        else if (input == 50-10) return "XL";
-        else if (input == 100-10) return "XC";
-        else if (input == 500-100) return "CD";
-        else if (input == 1000-100) return "CM";
-        return null;
+    private boolean isTrailingNumber(int input) {
+        return (input == 4 || input == 9 || input == 40 || input == 90 || input == 400 || input == 900);
+    }
+
+    public void appendForTrailingNumber(int input) {
+        Map<Integer, Integer> divisorMap = new LinkedHashMap<Integer, Integer>() {{
+            put(1000, 100);
+            put(500, 100);
+            put(100, 10);
+            put(50, 10);
+            put(10, 1);
+            put(5, 1);
+            put(1, 1);
+        }};
+
+        for (Map.Entry entry : divisorMap.entrySet()) {
+            if (input == (int) entry.getKey() - (int) entry.getValue()) {
+                sb.append(mainNumberMapping.get(entry.getValue())).append(mainNumberMapping.get(entry.getKey()));
+                break;
+            }
+        }
     }
 
     public String romanRepresentationOf(int input) {
@@ -47,7 +62,7 @@ public class IntegerToRomanNumberConverter {
         return mainNumberMapping.containsKey(input);
     }
 
-    public void appendForTrailingNumber(int input, int integerNumber) {
+    public void appendForFollowingNumber(int input, int integerNumber) {
         if (input > 500) {
             append(input, integerNumber, 100);
         } else if (input > 50) {
