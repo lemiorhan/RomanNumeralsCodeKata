@@ -1,10 +1,8 @@
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class IntegerToRomanNumberConverter {
 
     Map<Integer, String> mainNumberMapping;
-    private StringBuilder sb;
     private Map<Integer, Integer> divisorMap;
 
     public IntegerToRomanNumberConverter(Map<Integer, String> mainNumberMapping, Map<Integer, Integer> divisorMap) {
@@ -13,44 +11,32 @@ public class IntegerToRomanNumberConverter {
     }
 
     public String convert(int input) {
-        if (input == 54) {
-            return convertEachDigit(50) + convertEachDigit(4);
-        }
-        else if (input == 82) {
-            return convertEachDigit(80) + convertEachDigit(2);
-        }
-        return convertEachDigit(input);
-    }
-
-    public String convertEachDigit(int input) {
-        sb = new StringBuilder();
-
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
         for (Map.Entry entry : divisorMap.entrySet()) {
             if (input == (int) entry.getKey() - (int) entry.getValue()) {
-                appendForTrailingNumber(input);
-                return sb.toString();
+                return appendForTrailingNumber(input);
             }
         }
 
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
-                appendForFollowingNumber(input, (Integer) entry.getKey());
-                return sb.toString();
+                return appendForFollowingNumber(input, (Integer) entry.getKey());
             }
         }
         return null;
     }
 
-    public void appendForTrailingNumber(int input) {
+    public String appendForTrailingNumber(int input) {
+        StringBuilder fsb = new StringBuilder();
         for (Map.Entry entry : divisorMap.entrySet()) {
             if (input == (int) entry.getKey() - (int) entry.getValue()) {
-                sb.append(mainNumberMapping.get(entry.getValue())).append(mainNumberMapping.get(entry.getKey()));
+                fsb.append(mainNumberMapping.get(entry.getValue())).append(mainNumberMapping.get(entry.getKey()));
                 break;
             }
         }
+        return fsb.toString();
     }
 
     public String romanRepresentationOf(int input) {
@@ -61,23 +47,26 @@ public class IntegerToRomanNumberConverter {
         return mainNumberMapping.containsKey(input);
     }
 
-    public void appendForFollowingNumber(int input, int integerNumber) {
+    public String appendForFollowingNumber(int input, int integerNumber) {
         if (input > 500) {
-            append(input, integerNumber, 100);
+            return append(input, integerNumber, 100);
         } else if (input > 50) {
-            append(input, integerNumber, 10);
+            return append(input, integerNumber, 10);
         } else if (input > 1) {
-            append(input, integerNumber, 1);
+            return append(input, integerNumber, 1);
         }
+        return "";
     }
 
-    public void append(int input, int integerNumber, int divisor) {
+    public String append(int input, int integerNumber, int divisor) {
+        StringBuilder fsb = new StringBuilder();
         if (input > integerNumber) {
-            sb.append(romanRepresentationOf(integerNumber));
+            fsb.append(romanRepresentationOf(integerNumber));
             for (int i = 0; i < (input - integerNumber) / divisor; i++) {
-                sb.append(romanRepresentationOf(divisor));
+                fsb.append(romanRepresentationOf(divisor));
             }
         }
+        return fsb.toString();
     }
 
 }
