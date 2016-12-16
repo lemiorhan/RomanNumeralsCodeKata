@@ -17,11 +17,11 @@ public class IntegerToRomanNumberConverter {
             return mainNumberMapping.get(input);
 
         if (input > 10) {
-            appendOnes(input, "X", 10);
+            appendOnes(input, mainNumberMapping.get(10), 10);
         } else if (input > 5) {
-            appendOnes(input, "V", 5);
+            appendOnes(input, mainNumberMapping.get(5), 5);
         } else {
-            appendOnes(input, "I", 1);
+            appendOnes(input, mainNumberMapping.get(1), 1);
         }
         return sb.toString();
     }
