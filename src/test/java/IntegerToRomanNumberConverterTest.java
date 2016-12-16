@@ -51,7 +51,9 @@ public class IntegerToRomanNumberConverterTest {
     }
 
     @Test
-    public void shouldConvertSixy() throws Exception {
+    public void shouldConvertSixySeventy() throws Exception {
         assertEquals("LX", converter.convert(60));
+        assertEquals("LXX", converter.convert(70));
+        assertEquals("LXXX", converter.convert(80));
     }
 }
