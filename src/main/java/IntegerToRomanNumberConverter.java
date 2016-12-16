@@ -16,10 +16,6 @@ public class IntegerToRomanNumberConverter {
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
-        if (input == 60) return "LX";
-        else if (input == 70) return "LXX";
-        else if (input == 80) return "LXXX";
-
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
                 appendOnes(input, (Integer) entry.getKey());
@@ -39,12 +35,20 @@ public class IntegerToRomanNumberConverter {
     }
 
     public void appendOnes(int input, int integerNumber) {
-        if (input > integerNumber) {
-            sb.append(romanRepresentationOf(integerNumber));
-            for (int i = 0; i < input - integerNumber; i++) {
-                sb.append("I");
+        if (input > 50) {
+            if (input > integerNumber) {
+                sb.append(romanRepresentationOf(integerNumber));
+                for (int i = 0; i < (input - integerNumber) / 10; i++) {
+                    sb.append("X");
+                }
+            }
+        } else {
+            if (input > integerNumber) {
+                sb.append(romanRepresentationOf(integerNumber));
+                for (int i = 0; i < (input - integerNumber) / 1; i++) {
+                    sb.append("I");
+                }
             }
         }
-
     }
 }

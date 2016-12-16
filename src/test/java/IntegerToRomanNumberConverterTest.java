@@ -15,6 +15,7 @@ public class IntegerToRomanNumberConverterTest {
     @Before
     public void doBefore() {
         Map<Integer, String> mainNumberMapping = new LinkedHashMap<Integer, String>() {{
+            put(50, "L");
             put(10, "X");
             put(5, "V");
             put(1, "I");
