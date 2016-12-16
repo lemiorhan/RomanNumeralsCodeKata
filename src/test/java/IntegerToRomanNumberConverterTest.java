@@ -36,6 +36,10 @@ public class IntegerToRomanNumberConverterTest {
     public void shouldConvertMainNumber() throws Exception {
         assertEquals("V", converter.convert(5));
         assertEquals("X", converter.convert(10));
+        assertEquals("L", converter.convert(50));
+        assertEquals("C", converter.convert(100));
+        assertEquals("D", converter.convert(500));
+        assertEquals("M", converter.convert(1000));
     }
 
     @Test
