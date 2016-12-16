@@ -16,20 +16,22 @@ public class IntegerToRomanNumberConverter {
         if (mainNumberMapping.containsKey(input))
             return mainNumberMapping.get(input);
 
-        if (input > 10) {
-            appendOnes(input, 10);
-        } else if (input > 5) {
-            appendOnes(input, 5);
-        } else {
-            appendOnes(input, 1);
+        for (Map.Entry entry : mainNumberMapping.entrySet()) {
+            if (input > (Integer) entry.getKey()) {
+                appendOnes(input, (Integer) entry.getKey());
+                break;
+            }
         }
+
         return sb.toString();
     }
 
     public void appendOnes(int input, int integerNumber) {
-        sb.append(mainNumberMapping.get(integerNumber));
-        for (int i = 0; i < input - integerNumber; i++) {
-            sb.append("I");
+        if (input > integerNumber) {
+            sb.append(mainNumberMapping.get(integerNumber));
+            for (int i = 0; i < input - integerNumber; i++) {
+                sb.append("I");
+            }
         }
 
     }

@@ -2,7 +2,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.SortedMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,10 +14,10 @@ public class IntegerToRomanNumberConverterTest {
 
     @Before
     public void doBefore() {
-        Map<Integer, String> mainNumberMapping = new HashMap<Integer, String>() {{
-            put(1, "I");
-            put(5, "V");
+        Map<Integer, String> mainNumberMapping = new LinkedHashMap<Integer, String>() {{
             put(10, "X");
+            put(5, "V");
+            put(1, "I");
         }};
 
         converter = new IntegerToRomanNumberConverter(mainNumberMapping);
