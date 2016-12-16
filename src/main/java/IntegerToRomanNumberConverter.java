@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 
 public class IntegerToRomanNumberConverter {
@@ -17,6 +18,10 @@ public class IntegerToRomanNumberConverter {
 
         if (input == 4) return "IV";
         else if (input == 9) return "IX";
+        else if (input == 40) return "XL";
+        else if (input == 90) return "XC";
+        else if (input == 400) return "CD";
+        else if (input == 900) return "CM";
 
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
