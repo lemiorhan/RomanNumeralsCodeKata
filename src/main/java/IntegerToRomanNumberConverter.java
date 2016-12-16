@@ -16,12 +16,8 @@ public class IntegerToRomanNumberConverter {
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
-        if (input == 4) return "IV";
-        else if (input == 9) return "IX";
-        else if (input == 40) return "XL";
-        else if (input == 90) return "XC";
-        else if (input == 400) return "CD";
-        else if (input == 900) return "CM";
+        String x = appendFollowingNumber(input);
+        if (x != null) return x;
 
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
@@ -31,6 +27,16 @@ public class IntegerToRomanNumberConverter {
         }
 
         return sb.toString();
+    }
+
+    public String appendFollowingNumber(int input) {
+        if (input == 4) return "IV";
+        else if (input == 9) return "IX";
+        else if (input == 40) return "XL";
+        else if (input == 90) return "XC";
+        else if (input == 400) return "CD";
+        else if (input == 900) return "CM";
+        return null;
     }
 
     public String romanRepresentationOf(int input) {
