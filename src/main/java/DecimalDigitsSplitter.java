@@ -1,20 +1,17 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DecimalDigitsSplitter {
 
     public List<Integer> split(int input) {
+        List<Integer> digitDivisor = Arrays.asList(1000, 100, 10, 1);
         List<Integer> list = new ArrayList<>();
-        list.add(input - (input % 1000));
-        input = input % 1000;
 
-        list.add(input - (input % 100));
-        input = input % 100;
-
-        list.add(input - (input % 10));
-        input = input % 10;
-
-        list.add(input - (input % 1));
+        for (int divisor : digitDivisor) {
+            list.add(input - (input % divisor));
+            input = input % divisor;
+        }
         return list;
     }
 }
