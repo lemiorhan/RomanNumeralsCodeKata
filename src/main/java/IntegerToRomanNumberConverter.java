@@ -35,7 +35,14 @@ public class IntegerToRomanNumberConverter {
     }
 
     public void appendOnes(int input, int integerNumber) {
-        if (input > 50) {
+        if (input > 500) {
+            if (input > integerNumber) {
+                sb.append(romanRepresentationOf(integerNumber));
+                for (int i = 0; i < (input - integerNumber) / 100; i++) {
+                    sb.append("C");
+                }
+            }
+        } else if (input > 50) {
             if (input > integerNumber) {
                 sb.append(romanRepresentationOf(integerNumber));
                 for (int i = 0; i < (input - integerNumber) / 10; i++) {

@@ -1,10 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.SortedMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,6 +13,7 @@ public class IntegerToRomanNumberConverterTest {
     @Before
     public void doBefore() {
         Map<Integer, String> mainNumberMapping = new LinkedHashMap<Integer, String>() {{
+            put(500, "D");
             put(100, "C");
             put(50, "L");
             put(10, "X");
@@ -64,5 +63,12 @@ public class IntegerToRomanNumberConverterTest {
         assertEquals("CX", converter.convert(110));
         assertEquals("CXX", converter.convert(120));
         assertEquals("CXXX", converter.convert(130));
+    }
+
+    @Test
+    public void shouldConvertSixHundredSevenHundredEightHundred() throws Exception {
+        assertEquals("DC", converter.convert(600));
+        assertEquals("DCC", converter.convert(700));
+        assertEquals("DCCC", converter.convert(800));
     }
 }
