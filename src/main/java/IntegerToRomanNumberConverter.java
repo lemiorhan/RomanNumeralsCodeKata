@@ -3,20 +3,35 @@ import java.util.Map;
 
 public class IntegerToRomanNumberConverter {
 
+    Map<Integer, String> mainNumberMapping;
+    private StringBuilder sb;
+
+    public IntegerToRomanNumberConverter(Map<Integer, String> mainNumberMapping) {
+        this.mainNumberMapping = mainNumberMapping;
+    }
 
     public String convert(int input) {
-        Map<Integer, String> mapping = new HashMap<Integer, String>() {{
-            put(5, "V");
-            put(10, "X");
-            put(50, "L");
-        }};
-        if (mapping.containsKey(input))
-            return mapping.get(input);
+        if (mainNumberMapping.containsKey(input))
+            return mainNumberMapping.get(input);
 
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < input; i++) {
-            sb.append("I");
+        sb = new StringBuilder();
+
+        if (input > 10) {
+            appendOnes(input, "X", 10);
+        } else if (input > 5) {
+            appendOnes(input, "V", 5);
+        } else {
+            for (int i = 0; i < input; i++) {
+                sb.append("I");
+            }
         }
         return sb.toString();
+    }
+
+    public void appendOnes(int input, String romanNumber, int integerNumber) {
+        sb.append(romanNumber);
+        for (int i = 0; i < input - integerNumber; i++) {
+            sb.append("I");
+        }
     }
 }
