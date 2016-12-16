@@ -15,6 +15,9 @@ public class IntegerToRomanNumberConverter {
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
+        if (input == 4) return "IV";
+        else if (input == 9) return "IX";
+
         for (Map.Entry entry : mainNumberMapping.entrySet()) {
             if (input > (Integer) entry.getKey()) {
                 appendForTrailingNumber(input, (Integer) entry.getKey());

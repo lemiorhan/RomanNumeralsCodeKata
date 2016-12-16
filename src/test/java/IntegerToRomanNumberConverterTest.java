@@ -84,5 +84,10 @@ public class IntegerToRomanNumberConverterTest {
         assertEquals("MCCC", converter.convert(1300));
     }
 
-    
+    @Test
+    public void shouldConvertFourNine() throws Exception {
+        assertEquals("IV", converter.convert(4));
+        assertEquals("IX", converter.convert(9));
+    }
+
 }
