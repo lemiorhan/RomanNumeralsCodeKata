@@ -4,13 +4,23 @@ public class IntegerToRomanNumberConverter {
 
     Map<Integer, String> mainNumberMapping;
     private Map<Integer, Integer> divisorMap;
+    private DecimalDigitsSplitter splitter;
 
-    public IntegerToRomanNumberConverter(Map<Integer, String> mainNumberMapping, Map<Integer, Integer> divisorMap) {
+    public IntegerToRomanNumberConverter(Map<Integer, String> mainNumberMapping, Map<Integer, Integer> divisorMap, DecimalDigitsSplitter splitter) {
         this.mainNumberMapping = mainNumberMapping;
         this.divisorMap = divisorMap;
+        this.splitter = splitter;
     }
 
     public String convert(int input) {
+        StringBuilder sb = new StringBuilder();
+        for (Integer digit : splitter.split(input)) {
+            if (digit != 0) sb.append(convertDigit(digit));
+        }
+        return sb.toString();
+    }
+
+    public String convertDigit(int input) {
         if (isMainNumber(input))
             return romanRepresentationOf(input);
 
@@ -25,7 +35,7 @@ public class IntegerToRomanNumberConverter {
                 return appendForFollowingNumber(input, (Integer) entry.getKey());
             }
         }
-        return null;
+        throw new RuntimeException("Unable to convert");
     }
 
     public String appendForTrailingNumber(int input) {
@@ -48,7 +58,16 @@ public class IntegerToRomanNumberConverter {
     }
 
     public String appendForFollowingNumber(int input, int integerNumber) {
-        if (input > 500) {
+        if (input / 1000 == 2 || input / 1000 == 3) {
+            return append(input, integerNumber, 1000);
+        }
+        else if (input / 10 == 2 || input / 10 == 3) {
+            return append(input, integerNumber, 10);
+        }
+        else if (input / 100 == 2 || input / 100 == 3) {
+            return append(input, integerNumber, 100);
+        }
+        else if (input > 500) {
             return append(input, integerNumber, 100);
         } else if (input > 50) {
             return append(input, integerNumber, 10);

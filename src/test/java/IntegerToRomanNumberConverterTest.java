@@ -9,6 +9,8 @@ import static org.junit.Assert.assertEquals;
 public class IntegerToRomanNumberConverterTest {
 
     private IntegerToRomanNumberConverter converter;
+    private DecimalDigitsSplitter splitter;
+
 
     @Before
     public void doBefore() {
@@ -32,7 +34,8 @@ public class IntegerToRomanNumberConverterTest {
             put(1, 1);
         }};
 
-        converter = new IntegerToRomanNumberConverter(mainNumberMapping, divisorMap);
+        splitter = new DecimalDigitsSplitter();
+        converter = new IntegerToRomanNumberConverter(mainNumberMapping, divisorMap, splitter);
     }
 
     @Test
@@ -67,6 +70,12 @@ public class IntegerToRomanNumberConverterTest {
     }
 
     @Test
+    public void shouldConvert_20_30() throws Exception {
+        assertEquals("XX", converter.convert(20));
+        assertEquals("XXX", converter.convert(30));
+    }
+
+    @Test
     public void shouldConvert_60_70_80() throws Exception {
         assertEquals("LX", converter.convert(60));
         assertEquals("LXX", converter.convert(70));
@@ -78,6 +87,12 @@ public class IntegerToRomanNumberConverterTest {
         assertEquals("CX", converter.convert(110));
         assertEquals("CXX", converter.convert(120));
         assertEquals("CXXX", converter.convert(130));
+    }
+
+    @Test
+    public void shouldConvert_200_300() throws Exception {
+        assertEquals("CC", converter.convert(200));
+        assertEquals("CCC", converter.convert(300));
     }
 
     @Test
@@ -111,14 +126,10 @@ public class IntegerToRomanNumberConverterTest {
     }
 
     @Test
-    public void shouldConvert_99() throws Exception {
-
-        DecimalDigitsSplitter decimalDigitsSplitter = new DecimalDigitsSplitter();
-        StringBuilder sb = new StringBuilder();
-        for (Integer digit : decimalDigitsSplitter.split(99)) {
-            if (digit != 0) sb.append(converter.convert(digit));
-        }
-        assertEquals("XCIX", sb.toString());
+    public void shouldConvert_99_199_2999() throws Exception {
+        assertEquals("XCIX", converter.convert(99));
+        assertEquals("CXCIX", converter.convert(199));
+        assertEquals("MMCMXCIX", converter.convert(2999));
     }
 
 
