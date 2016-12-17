@@ -1,6 +1,8 @@
 
-public class TrainingIntegerToRomanNumberConverter {
+public class TrainingIntegerToRomanNumberConverter implements RomanConversionHandler {
     IntegerToRomanNumberMapping mapping;
+    private RomanConversionHandler successor;
+
 
     public TrainingIntegerToRomanNumberConverter(IntegerToRomanNumberMapping mapping) {
         this.mapping = mapping;
@@ -24,5 +26,23 @@ public class TrainingIntegerToRomanNumberConverter {
             }
         }
         return fsb.toString();
+    }
+
+    @Override
+    public void handle(ConversionResult result) {
+        if (result.romanNumber != null) return;
+
+        for (Integer mainInteger : mapping.mainIntegers()) {
+            if (result.integerNumber == mainInteger - mapping.divisorOf(mainInteger)) {
+                result.romanNumber = appendForTrailingNumber(result.integerNumber);
+                break;
+            }
+        }
+        if (successor != null) successor.handle(result);
+    }
+
+    @Override
+    public void setSuccessor(RomanConversionHandler handler) {
+        successor = handler;
     }
 }

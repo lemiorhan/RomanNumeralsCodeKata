@@ -19,16 +19,18 @@ public class IntegerToRomanNumberConverter {
     }
 
     public String convertDigit(int input) {
-        String romanNumber = new MainIntegerToRomanNumbersConverter(mapping).convert(input);
-        if (romanNumber != null) return romanNumber;
+        RomanConversionHandler step1 = new MainIntegerToRomanNumbersConverter(mapping);
+        RomanConversionHandler step2 = new TrainingIntegerToRomanNumberConverter(mapping);
+        RomanConversionHandler step3 = new FollowingIntegerToRomanNumberConverter(mapping);
 
-        romanNumber = new TrainingIntegerToRomanNumberConverter(mapping).convert(input);
-        if (romanNumber != null) return romanNumber;
+        step1.setSuccessor(step2);
+        step2.setSuccessor(step3);
 
-        romanNumber = new FollowingIntegerToRomanNumberConverter(mapping).convert(input);
-        if (romanNumber != null) return romanNumber;
+        ConversionResult result = new ConversionResult();
+        result.integerNumber = input;
 
-        throw new RuntimeException("Unable to convert");
+        step1.handle(result);
+        return result.romanNumber;
     }
 
 }
