@@ -2,7 +2,7 @@ import java.util.Map;
 
 public class IntegerToRomanNumberConverter {
 
-    Map<Integer, String> mainNumberMapping;
+    private Map<Integer, String> mainNumberMapping;
     private Map<Integer, Integer> divisorMap;
     private DecimalDigitsSplitter splitter;
 
@@ -35,6 +35,7 @@ public class IntegerToRomanNumberConverter {
                 return appendForFollowingNumber(input, (Integer) entry.getKey());
             }
         }
+
         throw new RuntimeException("Unable to convert");
     }
 
