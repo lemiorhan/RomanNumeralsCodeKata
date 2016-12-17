@@ -14,16 +14,6 @@ public class IntegerToRomanNumberConverterTest {
 
     @Before
     public void doBefore() {
-        Map<Integer, String> mainNumberMapping = new LinkedHashMap<Integer, String>() {{
-            put(1000, "M");
-            put(500, "D");
-            put(100, "C");
-            put(50, "L");
-            put(10, "X");
-            put(5, "V");
-            put(1, "I");
-        }};
-
         Map<Integer, Integer> divisorMap = new LinkedHashMap<Integer, Integer>() {{
             put(1000, 100);
             put(500, 100);
@@ -35,7 +25,7 @@ public class IntegerToRomanNumberConverterTest {
         }};
 
         splitter = new DecimalDigitsSplitter();
-        converter = new IntegerToRomanNumberConverter(mainNumberMapping, divisorMap, splitter);
+        converter = new IntegerToRomanNumberConverter(divisorMap, splitter);
     }
 
     @Test
