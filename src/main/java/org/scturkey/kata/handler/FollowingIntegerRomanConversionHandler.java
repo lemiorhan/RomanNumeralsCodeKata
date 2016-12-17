@@ -1,21 +1,16 @@
+package org.scturkey.kata.handler;
 
-public class FollowingIntegerToRomanNumberConverter implements RomanConversionHandler {
+import org.scturkey.kata.ConversionResult;
+import org.scturkey.kata.IntegerToRomanNumberMapping;
+
+public class FollowingIntegerRomanConversionHandler implements RomanConversionHandler {
 
     private IntegerToRomanNumberMapping mapping;
     private RomanConversionHandler successor;
 
 
-    public FollowingIntegerToRomanNumberConverter(IntegerToRomanNumberMapping mapping) {
+    public FollowingIntegerRomanConversionHandler(IntegerToRomanNumberMapping mapping) {
         this.mapping = mapping;
-    }
-
-    public String convert(int input) {
-        for (Integer mainInteger : mapping.mainIntegers()) {
-            if (input > mainInteger) {
-                return appendForFollowingNumber(input, mainInteger);
-            }
-        }
-        return null;
     }
 
     public String appendForFollowingNumber(int input, int integerNumber) {

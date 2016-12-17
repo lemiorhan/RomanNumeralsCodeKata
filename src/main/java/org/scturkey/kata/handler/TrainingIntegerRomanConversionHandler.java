@@ -1,20 +1,15 @@
+package org.scturkey.kata.handler;
 
-public class TrainingIntegerToRomanNumberConverter implements RomanConversionHandler {
+import org.scturkey.kata.ConversionResult;
+import org.scturkey.kata.IntegerToRomanNumberMapping;
+
+public class TrainingIntegerRomanConversionHandler implements RomanConversionHandler {
     IntegerToRomanNumberMapping mapping;
     private RomanConversionHandler successor;
 
 
-    public TrainingIntegerToRomanNumberConverter(IntegerToRomanNumberMapping mapping) {
+    public TrainingIntegerRomanConversionHandler(IntegerToRomanNumberMapping mapping) {
         this.mapping = mapping;
-    }
-
-    public String convert(int input) {
-        for (Integer mainInteger : mapping.mainIntegers()) {
-            if (input == mainInteger - mapping.divisorOf(mainInteger)) {
-                return appendForTrailingNumber(input);
-            }
-        }
-        return null;
     }
 
     public String appendForTrailingNumber(int input) {

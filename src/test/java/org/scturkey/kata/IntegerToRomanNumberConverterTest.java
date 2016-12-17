@@ -1,5 +1,9 @@
+package org.scturkey.kata;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.scturkey.kata.DecimalDigitsSplitter;
+import org.scturkey.kata.IntegerToRomanNumberConverter;
 
 import static org.junit.Assert.assertEquals;
 

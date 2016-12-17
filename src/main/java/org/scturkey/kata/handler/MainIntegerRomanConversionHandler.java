@@ -1,10 +1,14 @@
+package org.scturkey.kata.handler;
 
-public class MainIntegerToRomanNumbersConverter implements RomanConversionHandler {
+import org.scturkey.kata.ConversionResult;
+import org.scturkey.kata.IntegerToRomanNumberMapping;
+
+public class MainIntegerRomanConversionHandler implements RomanConversionHandler {
 
     private IntegerToRomanNumberMapping mapping;
     private RomanConversionHandler successor;
 
-    public MainIntegerToRomanNumbersConverter(IntegerToRomanNumberMapping mapping) {
+    public MainIntegerRomanConversionHandler(IntegerToRomanNumberMapping mapping) {
         this.mapping = mapping;
     }
 

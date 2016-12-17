@@ -1,3 +1,5 @@
+package org.scturkey.kata;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;

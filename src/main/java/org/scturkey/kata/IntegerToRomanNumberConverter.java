@@ -1,4 +1,9 @@
-import java.util.Map;
+package org.scturkey.kata;
+
+import org.scturkey.kata.handler.FollowingIntegerRomanConversionHandler;
+import org.scturkey.kata.handler.MainIntegerRomanConversionHandler;
+import org.scturkey.kata.handler.RomanConversionHandler;
+import org.scturkey.kata.handler.TrainingIntegerRomanConversionHandler;
 
 public class IntegerToRomanNumberConverter {
 
@@ -19,9 +24,9 @@ public class IntegerToRomanNumberConverter {
     }
 
     public String convertDigit(int input) {
-        RomanConversionHandler step1 = new MainIntegerToRomanNumbersConverter(mapping);
-        RomanConversionHandler step2 = new TrainingIntegerToRomanNumberConverter(mapping);
-        RomanConversionHandler step3 = new FollowingIntegerToRomanNumberConverter(mapping);
+        RomanConversionHandler step1 = new MainIntegerRomanConversionHandler(mapping);
+        RomanConversionHandler step2 = new TrainingIntegerRomanConversionHandler(mapping);
+        RomanConversionHandler step3 = new FollowingIntegerRomanConversionHandler(mapping);
 
         step1.setSuccessor(step2);
         step2.setSuccessor(step3);
