@@ -7,15 +7,9 @@ import org.scturkey.kata.handler.TrainingIntegerRomanConversionHandler;
 
 public class IntegerToRomanNumberConverter {
 
-    private DecimalDigitsSplitter splitter;
-
-    public IntegerToRomanNumberConverter(DecimalDigitsSplitter splitter) {
-        this.splitter = splitter;
-    }
-
     public String convert(int input) {
         StringBuilder sb = new StringBuilder();
-        for (Integer digit : splitter.split(input)) {
+        for (Integer digit : DecimalDigitsSplitter.split(input)) {
             if (digit != 0) sb.append(convertDigit(digit));
         }
         return sb.toString();

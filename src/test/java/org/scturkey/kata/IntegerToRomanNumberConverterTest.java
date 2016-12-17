@@ -11,8 +11,7 @@ public class IntegerToRomanNumberConverterTest {
 
     @Before
     public void doBefore() {
-        DecimalDigitsSplitter splitter = new DecimalDigitsSplitter();
-        converter = new IntegerToRomanNumberConverter(splitter);
+        converter = new IntegerToRomanNumberConverter();
     }
 
     @Test

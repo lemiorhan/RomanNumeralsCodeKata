@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DecimalDigitsSplitter {
 
-    public List<Integer> split(int input) {
+    public static List<Integer> split(int input) {
         List<Integer> digitDivisor = Arrays.asList(1000, 100, 10, 1);
         List<Integer> list = new ArrayList<>();
 
