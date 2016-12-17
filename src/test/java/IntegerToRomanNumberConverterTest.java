@@ -1,31 +1,16 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-
-import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
 public class IntegerToRomanNumberConverterTest {
 
     private IntegerToRomanNumberConverter converter;
-    private DecimalDigitsSplitter splitter;
-
 
     @Before
     public void doBefore() {
-        Map<Integer, Integer> divisorMap = new LinkedHashMap<Integer, Integer>() {{
-            put(1000, 100);
-            put(500, 100);
-            put(100, 10);
-            put(50, 10);
-            put(10, 1);
-            put(5, 1);
-            put(1, 1);
-        }};
-
-        splitter = new DecimalDigitsSplitter();
-        converter = new IntegerToRomanNumberConverter(divisorMap, splitter);
+        DecimalDigitsSplitter splitter = new DecimalDigitsSplitter();
+        converter = new IntegerToRomanNumberConverter(splitter);
     }
 
     @Test

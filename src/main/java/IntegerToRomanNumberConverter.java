@@ -2,12 +2,10 @@ import java.util.Map;
 
 public class IntegerToRomanNumberConverter {
 
-    private Map<Integer, Integer> divisorMap;
     private DecimalDigitsSplitter splitter;
     private IntegerToRomanNumberMapping mapping;
 
-    public IntegerToRomanNumberConverter(Map<Integer, Integer> divisorMap, DecimalDigitsSplitter splitter) {
-        this.divisorMap = divisorMap;
+    public IntegerToRomanNumberConverter(DecimalDigitsSplitter splitter) {
         this.splitter = splitter;
         mapping = new IntegerToRomanNumberMapping();
     }
@@ -24,8 +22,8 @@ public class IntegerToRomanNumberConverter {
         if (mapping.isMainNumber(input))
             return mapping.romanRepresentationOf(input);
 
-        for (Map.Entry entry : divisorMap.entrySet()) {
-            if (input == (int) entry.getKey() - (int) entry.getValue()) {
+        for (Integer mainInteger : mapping.mainIntegers()) {
+            if (input == mainInteger - mapping.divisorOf(mainInteger)) {
                 return appendForTrailingNumber(input);
             }
         }
@@ -41,9 +39,9 @@ public class IntegerToRomanNumberConverter {
 
     public String appendForTrailingNumber(int input) {
         StringBuilder fsb = new StringBuilder();
-        for (Map.Entry entry : divisorMap.entrySet()) {
-            if (input == (int) entry.getKey() - (int) entry.getValue()) {
-                fsb.append(mapping.romanRepresentationOf((int)entry.getValue())).append(mapping.romanRepresentationOf((int)entry.getKey()));
+        for (Integer mainInteger : mapping.mainIntegers()) {
+            if (input == mainInteger - mapping.divisorOf(mainInteger)) {
+                fsb.append(mapping.romanRepresentationOf(mapping.divisorOf(mainInteger))).append(mapping.romanRepresentationOf(mainInteger));
                 break;
             }
         }

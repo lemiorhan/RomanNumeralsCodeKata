@@ -29,6 +29,10 @@ public class IntegerToRomanNumberMapping {
         return mainNumberMapping.get(input);
     }
 
+    public int divisorOf(int input) {
+        return divisorMap.get(input);
+    }
+
     public boolean isMainNumber(int input) {
         return mainNumberMapping.containsKey(input);
     }
