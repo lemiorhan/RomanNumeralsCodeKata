@@ -5,13 +5,7 @@ import org.scturkey.kata.IntegerToRomanNumberMapping;
 
 public class FollowingIntegerRomanConversionHandler implements RomanConversionHandler {
 
-    private IntegerToRomanNumberMapping mapping;
     private RomanConversionHandler successor;
-
-
-    public FollowingIntegerRomanConversionHandler(IntegerToRomanNumberMapping mapping) {
-        this.mapping = mapping;
-    }
 
     public String appendForFollowingNumber(int input, int integerNumber) {
         if (input / 1000 == 2 || input / 1000 == 3) {
@@ -33,9 +27,9 @@ public class FollowingIntegerRomanConversionHandler implements RomanConversionHa
     public String append(int input, int integerNumber, int divisor) {
         StringBuilder fsb = new StringBuilder();
         if (input > integerNumber) {
-            fsb.append(mapping.romanRepresentationOf(integerNumber));
+            fsb.append(IntegerToRomanNumberMapping.romanRepresentationOf(integerNumber));
             for (int i = 0; i < (input - integerNumber) / divisor; i++) {
-                fsb.append(mapping.romanRepresentationOf(divisor));
+                fsb.append(IntegerToRomanNumberMapping.romanRepresentationOf(divisor));
             }
         }
         return fsb.toString();
@@ -45,7 +39,7 @@ public class FollowingIntegerRomanConversionHandler implements RomanConversionHa
     public void handle(ConversionResult result) {
         if (result.romanNumber != null) return;
 
-        for (Integer mainInteger : mapping.mainIntegers()) {
+        for (Integer mainInteger : IntegerToRomanNumberMapping.mainIntegers()) {
             if (result.integerNumber > mainInteger) {
                 result.romanNumber = appendForFollowingNumber(result.integerNumber, mainInteger);
                 break;

@@ -8,11 +8,9 @@ import org.scturkey.kata.handler.TrainingIntegerRomanConversionHandler;
 public class IntegerToRomanNumberConverter {
 
     private DecimalDigitsSplitter splitter;
-    private IntegerToRomanNumberMapping mapping;
 
     public IntegerToRomanNumberConverter(DecimalDigitsSplitter splitter) {
         this.splitter = splitter;
-        mapping = new IntegerToRomanNumberMapping();
     }
 
     public String convert(int input) {
@@ -24,9 +22,9 @@ public class IntegerToRomanNumberConverter {
     }
 
     public String convertDigit(int input) {
-        RomanConversionHandler step1 = new MainIntegerRomanConversionHandler(mapping);
-        RomanConversionHandler step2 = new TrainingIntegerRomanConversionHandler(mapping);
-        RomanConversionHandler step3 = new FollowingIntegerRomanConversionHandler(mapping);
+        RomanConversionHandler step1 = new MainIntegerRomanConversionHandler();
+        RomanConversionHandler step2 = new TrainingIntegerRomanConversionHandler();
+        RomanConversionHandler step3 = new FollowingIntegerRomanConversionHandler();
 
         step1.setSuccessor(step2);
         step2.setSuccessor(step3);
