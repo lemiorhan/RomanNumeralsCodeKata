@@ -37,11 +37,11 @@ public class FollowingIntegerRomanConversionHandler implements RomanConversionHa
 
     @Override
     public void handle(ConversionResult result) {
-        if (result.romanNumber != null) return;
+        if (result.romanNumber() != null) return;
 
         for (Integer mainInteger : IntegerToRomanNumberMapping.mainIntegers()) {
-            if (result.integerNumber > mainInteger) {
-                result.romanNumber = appendForFollowingNumber(result.integerNumber, mainInteger);
+            if (result.integerNumber() > mainInteger) {
+                result.setRomanNumber(appendForFollowingNumber(result.integerNumber(), mainInteger));
                 break;
             }
         }

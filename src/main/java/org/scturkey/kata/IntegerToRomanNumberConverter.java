@@ -18,11 +18,10 @@ public class IntegerToRomanNumberConverter {
         registry.register(new TrainingIntegerRomanConversionHandler());
         registry.register(new FollowingIntegerRomanConversionHandler());
 
-        ConversionResult result = new ConversionResult();
-        result.integerNumber = input;
+        ConversionResult result = new ConversionResult(input);
 
         registry.execute(result);
-        return result.romanNumber;
+        return result.romanNumber();
     }
 
 }

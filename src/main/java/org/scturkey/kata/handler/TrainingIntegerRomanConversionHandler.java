@@ -19,11 +19,11 @@ public class TrainingIntegerRomanConversionHandler implements RomanConversionHan
 
     @Override
     public void handle(ConversionResult result) {
-        if (result.romanNumber != null) return;
+        if (result.romanNumber() != null) return;
 
         for (Integer mainInteger : IntegerToRomanNumberMapping.mainIntegers()) {
-            if (result.integerNumber == mainInteger - IntegerToRomanNumberMapping.divisorOf(mainInteger)) {
-                result.romanNumber = appendForTrailingNumber(result.integerNumber);
+            if (result.integerNumber() == mainInteger - IntegerToRomanNumberMapping.divisorOf(mainInteger)) {
+                result.setRomanNumber(appendForTrailingNumber(result.integerNumber()));
                 break;
             }
         }
