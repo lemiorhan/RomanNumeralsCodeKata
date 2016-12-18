@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RomanConversionHandlerRegistry {
 
-    List<RomanConversionHandler> registry = new ArrayList<>();
+    private List<RomanConversionHandler> registry = new ArrayList<>();
 
     public void register(RomanConversionHandler handler) {
         registry.add(handler);

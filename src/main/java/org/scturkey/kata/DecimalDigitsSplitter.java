@@ -6,10 +6,10 @@ import java.util.List;
 
 public class DecimalDigitsSplitter {
 
-    public static List<Integer> split(int input) {
-        List<Integer> digitDivisor = Arrays.asList(1000, 100, 10, 1);
-        List<Integer> list = new ArrayList<>();
+    private static final List<Integer> digitDivisor = Arrays.asList(1000, 100, 10, 1);
 
+    public static List<Integer> split(int input) {
+        List<Integer> list = new ArrayList<>();
         for (int divisor : digitDivisor) {
             list.add(input - (input % divisor));
             input = input % divisor;

@@ -12,7 +12,7 @@ public class IntegerToRomanNumberConverter {
         return sb.toString();
     }
 
-    public String convertDigit(int input) {
+    private String convertDigit(int input) {
         RomanConversionHandlerRegistry registry = new RomanConversionHandlerRegistry();
         registry.register(new MainIntegerRomanConversionHandler());
         registry.register(new TrainingIntegerRomanConversionHandler());
