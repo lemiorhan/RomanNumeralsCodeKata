@@ -7,12 +7,16 @@ public class IntegerToRomanNumberConverter {
     public String convert(int input) {
         StringBuilder sb = new StringBuilder();
         for (Integer digit : DecimalDigitsSplitter.split(input)) {
-            if (DecimalDigitsSplitter.isValidDigit(digit)) sb.append(convertDigit(digit));
+            sb.append(convertDigit(digit));
         }
         return sb.toString();
     }
 
-    private String convertDigit(int input) {
+    private String convertDigit(Integer digit) {
+        return DecimalDigitsSplitter.isValidDigit(digit) ? applyConversionAlgorithms(digit) : "";
+    }
+
+    private String applyConversionAlgorithms(int input) {
         RomanConversionHandlerRegistry registry = new RomanConversionHandlerRegistry();
         registry.register(new MainIntegerRomanConversionHandler());
         registry.register(new TrainingIntegerRomanConversionHandler());
