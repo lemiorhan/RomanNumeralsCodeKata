@@ -28,7 +28,8 @@ public class TrainingIntegerRomanConversionHandler implements RomanConversionHan
         StringBuilder fsb = new StringBuilder();
         for (Integer mainInteger : IntegerToRomanNumberMapping.mainIntegers()) {
             if (input == mainInteger - IntegerToRomanNumberMapping.divisorOf(mainInteger)) {
-                fsb.append(IntegerToRomanNumberMapping.romanRepresentationOf(IntegerToRomanNumberMapping.divisorOf(mainInteger))).append(IntegerToRomanNumberMapping.romanRepresentationOf(mainInteger));
+                fsb.append(IntegerToRomanNumberMapping.romanRepresentationOf(IntegerToRomanNumberMapping.divisorOf(mainInteger)))
+                        .append(IntegerToRomanNumberMapping.romanRepresentationOf(mainInteger));
                 break;
             }
         }
