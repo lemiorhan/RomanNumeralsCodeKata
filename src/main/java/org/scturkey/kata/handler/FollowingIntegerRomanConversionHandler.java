@@ -7,7 +7,7 @@ public class FollowingIntegerRomanConversionHandler implements RomanConversionHa
 
     private RomanConversionHandler successor;
 
-    public String appendForFollowingNumber(int input, int integerNumber) {
+    public String convert(int input, int integerNumber) {
         if (input / 1000 == 2 || input / 1000 == 3) {
             return append(input, integerNumber, 1000);
         } else if (input / 10 == 2 || input / 10 == 3) {
@@ -41,7 +41,7 @@ public class FollowingIntegerRomanConversionHandler implements RomanConversionHa
 
         for (Integer mainInteger : IntegerToRomanNumberMapping.mainIntegers()) {
             if (result.integerNumber() > mainInteger) {
-                result.setRomanNumber(appendForFollowingNumber(result.integerNumber(), mainInteger));
+                result.setRomanNumber(convert(result.integerNumber(), mainInteger));
                 break;
             }
         }
