@@ -1,32 +1,27 @@
 package org.scturkey.kata;
 
-import org.scturkey.kata.handler.FollowingIntegerRomanConversionHandler;
-import org.scturkey.kata.handler.MainIntegerRomanConversionHandler;
-import org.scturkey.kata.handler.RomanConversionHandler;
-import org.scturkey.kata.handler.TrainingIntegerRomanConversionHandler;
+import org.scturkey.kata.handler.*;
 
 public class IntegerToRomanNumberConverter {
 
     public String convert(int input) {
         StringBuilder sb = new StringBuilder();
         for (Integer digit : DecimalDigitsSplitter.split(input)) {
-            if (digit != 0) sb.append(convertDigit(digit));
+            if (DecimalDigitsSplitter.isValidDigit(digit)) sb.append(convertDigit(digit));
         }
         return sb.toString();
     }
 
     public String convertDigit(int input) {
-        RomanConversionHandler step1 = new MainIntegerRomanConversionHandler();
-        RomanConversionHandler step2 = new TrainingIntegerRomanConversionHandler();
-        RomanConversionHandler step3 = new FollowingIntegerRomanConversionHandler();
-
-        step1.setSuccessor(step2);
-        step2.setSuccessor(step3);
+        RomanConversionHandlerRegistry registry = new RomanConversionHandlerRegistry();
+        registry.register(new MainIntegerRomanConversionHandler());
+        registry.register(new TrainingIntegerRomanConversionHandler());
+        registry.register(new FollowingIntegerRomanConversionHandler());
 
         ConversionResult result = new ConversionResult();
         result.integerNumber = input;
 
-        step1.handle(result);
+        registry.execute(result);
         return result.romanNumber;
     }
 

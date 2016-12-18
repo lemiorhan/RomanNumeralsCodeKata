@@ -16,4 +16,8 @@ public class DecimalDigitsSplitter {
         }
         return list;
     }
+
+    public static boolean isValidDigit(int input) {
+        return input != 0;
+    }
 }
