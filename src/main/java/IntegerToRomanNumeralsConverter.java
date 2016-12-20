@@ -20,14 +20,23 @@ public class IntegerToRomanNumeralsConverter {
             }
         }
 
-        if (input > 5) {
+        if (input > 10) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("X");
+            for (int i = 0; i < input - 10; i++) {
+                sb.append("I");
+            }
+            return sb.toString();
+
+        }
+        else if (input > 5) {
             StringBuilder sb = new StringBuilder();
             sb.append("V");
             for (int i = 0; i < input - 5; i++) {
                 sb.append("I");
             }
             return sb.toString();
-        } 
+        }
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < input; i++) {
