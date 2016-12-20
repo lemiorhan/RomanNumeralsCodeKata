@@ -9,13 +9,10 @@ public class IntegerToRomanNumeralsConverter {
             put(10, "X");
         }};
 
-        if (input == 6) {
-            return "VI";
-        } else if (input == 7) {
-            return "VII";
-        } else if (input == 8) {
-            return "VIII";
+        if (mapping.containsKey(input)) {
+            return mapping.get(input);
         }
+
 
         for (Map.Entry entry : mapping.entrySet()) {
             if ((int) entry.getKey() == input + 1) {
@@ -23,9 +20,14 @@ public class IntegerToRomanNumeralsConverter {
             }
         }
 
-        if (input >= 5) {
-            return mapping.get(input);
-        }
+        if (input > 5) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("V");
+            for (int i = 0; i < input - 5; i++) {
+                sb.append("I");
+            }
+            return sb.toString();
+        } 
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < input; i++) {
