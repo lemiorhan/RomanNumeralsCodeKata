@@ -6,6 +6,8 @@ public class IntegerToRomanNumeralsConverter {
             return "V";
         } else if (input == 10) {
             return "X";
+        } else if (input == 50) {
+            return "L";
         }
 
         StringBuilder sb = new StringBuilder();
