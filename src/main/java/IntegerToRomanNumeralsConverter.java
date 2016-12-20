@@ -11,6 +11,8 @@ public class IntegerToRomanNumeralsConverter {
 
         if (input == 6) {
             return "VI";
+        } else if (input == 7) {
+            return "VII";
         }
 
         for (Map.Entry entry : mapping.entrySet()) {
