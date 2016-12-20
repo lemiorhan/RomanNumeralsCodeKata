@@ -43,7 +43,7 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_11() throws Exception {
+    public void shouldConvert_11_12_13() throws Exception {
         assertEquals("XI", converter.convert(11));
         assertEquals("XII", converter.convert(12));
         assertEquals("XIII", converter.convert(13));
