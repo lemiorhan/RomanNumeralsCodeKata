@@ -25,5 +25,16 @@ public class IntegerToRomanNumeralsConverterTest {
         assertEquals("X", converter.convert(10));
         assertEquals("L", converter.convert(50));
     }
+
+    @Test
+    public void shouldConvert_4() throws Exception {
+        assertEquals("IV", converter.convert(4));
+    }
+
+    @Test
+    public void shouldConvert_9() throws Exception {
+        assertEquals("IX", converter.convert(9));
+
+    }
 }
 

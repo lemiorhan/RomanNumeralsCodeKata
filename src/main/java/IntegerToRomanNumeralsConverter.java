@@ -10,6 +10,12 @@ public class IntegerToRomanNumeralsConverter {
             put(50, "L");
         }};
 
+        if (input == 4) {
+            return "IV";
+        } else if (input == 9) {
+            return "IX";
+        }
+
         if (input >= 5) {
             return mapping.get(input);
         }
