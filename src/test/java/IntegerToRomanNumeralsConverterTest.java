@@ -33,6 +33,11 @@ public class IntegerToRomanNumeralsConverterTest {
     @Test
     public void shouldConvert_9() throws Exception {
         assertEquals("IX", converter.convert(9));
+    }
+
+    @Test
+    public void shouldCovert_6() throws Exception {
+        assertEquals("VI", converter.convert(6));
 
     }
 }

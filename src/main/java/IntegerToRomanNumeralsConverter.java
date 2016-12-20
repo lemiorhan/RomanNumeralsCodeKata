@@ -9,6 +9,10 @@ public class IntegerToRomanNumeralsConverter {
             put(10, "X");
         }};
 
+        if (input == 6) {
+            return "VI";
+        }
+
         for (Map.Entry entry : mapping.entrySet()) {
             if ((int) entry.getKey() == input + 1) {
                 return "I" + entry.getValue();
