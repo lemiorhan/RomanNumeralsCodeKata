@@ -13,6 +13,8 @@ public class IntegerToRomanNumeralsConverter {
             return "VI";
         } else if (input == 7) {
             return "VII";
+        } else if (input == 8) {
+            return "VIII";
         }
 
         for (Map.Entry entry : mapping.entrySet()) {

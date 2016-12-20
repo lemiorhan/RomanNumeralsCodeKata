@@ -36,9 +36,10 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldCovert_6() throws Exception {
+    public void shouldCovert_6_7_8() throws Exception {
         assertEquals("VI", converter.convert(6));
         assertEquals("VII", converter.convert(7));
+        assertEquals("VIII", converter.convert(8));
     }
 
 }
