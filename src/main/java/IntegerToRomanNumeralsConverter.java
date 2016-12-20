@@ -1,8 +1,11 @@
 
 public class IntegerToRomanNumeralsConverter {
     public String convert(int input) {
-        if (input == 1) return "I";
-        else if (input == 2) return "II";
-        return "III";
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < input; i++) {
+            sb.append("I");
+        }
+        return sb.toString();
     }
 }
