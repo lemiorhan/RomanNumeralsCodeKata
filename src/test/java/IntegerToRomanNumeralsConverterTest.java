@@ -20,10 +20,9 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_5_10_50() throws Exception {
+    public void shouldConvert_5_10() throws Exception {
         assertEquals("V", converter.convert(5));
         assertEquals("X", converter.convert(10));
-        assertEquals("L", converter.convert(50));
     }
 
     @Test

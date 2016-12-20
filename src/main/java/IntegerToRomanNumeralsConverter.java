@@ -7,13 +7,12 @@ public class IntegerToRomanNumeralsConverter {
         Map<Integer, String> mapping = new HashMap() {{
             put(5, "V");
             put(10,"X");
-            put(50, "L");
         }};
 
         if (input == 4) {
-            return "IV";
+            return "I"+"V";
         } else if (input == 9) {
-            return "IX";
+            return "I"+"X";
         }
 
         if (input >= 5) {
