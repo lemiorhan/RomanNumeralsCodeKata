@@ -6,13 +6,13 @@ public class IntegerToRomanNumeralsConverter {
 
         Map<Integer, String> mapping = new HashMap() {{
             put(5, "V");
-            put(10,"X");
+            put(10, "X");
         }};
 
-        if (input == 4) {
-            return "I"+"V";
-        } else if (input == 9) {
-            return "I"+"X";
+        for (Map.Entry entry : mapping.entrySet()) {
+            if ((int) entry.getKey() == input + 1) {
+                return "I" + entry.getValue();
+            }
         }
 
         if (input >= 5) {
