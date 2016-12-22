@@ -15,9 +15,13 @@ public class IntegerToRomanNumeralsConverter {
         }};
 
         Map<Integer, Integer> chipper = new LinkedHashMap<Integer, Integer>() {{
+            put(1000, 100);
             put(500, 100);
+            put(100, 10);
             put(50, 10);
+            put(10, 1);
             put(5, 1);
+            put(1, 1);
         }};
 
 
@@ -25,23 +29,14 @@ public class IntegerToRomanNumeralsConverter {
             return mapping.get(input);
         }
 
-        if (input >= 500 - 100) {
-            int chipperNumber = chipper.get(500);
-            if (mapping.containsKey(input + chipperNumber)) {
-                return mapping.get(chipperNumber) + mapping.get(input + chipperNumber);
-            }
-        } else if (input >= 50 - 10) {
-            int chipperNumber = chipper.get(10);
-            if (mapping.containsKey(input + chipperNumber)) {
-                return mapping.get(chipperNumber) + mapping.get(input + chipperNumber);
-            }
-        } else if (input >= 5 - 1) {
-            int chipperNumber = chipper.get(1);
-            if (mapping.containsKey(input + chipperNumber)) {
-                return mapping.get(chipperNumber) + mapping.get(input + chipperNumber);
+        for (Map.Entry entry : mapping.entrySet()) {
+            int mainNumber = (int) entry.getKey();
+            int chipperNumber = chipper.get(mainNumber);
+
+            if (input == mainNumber - chipperNumber) {
+                return mapping.get(chipperNumber) + mapping.get(mainNumber);
             }
         }
-
 
         for (Map.Entry entry : mapping.entrySet()) {
             if (input > (int) entry.getKey()) {
