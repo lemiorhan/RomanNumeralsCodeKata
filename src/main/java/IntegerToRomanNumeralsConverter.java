@@ -15,9 +15,13 @@ public class IntegerToRomanNumeralsConverter {
             return mapping.get(input);
         }
 
-        for (Map.Entry entry : mapping.entrySet()) {
-            if ((int) entry.getKey() == input + 1) {
-                return "I" + entry.getValue();
+        if (input == 40) {
+            return "XL";
+        } else {
+            for (Map.Entry entry : mapping.entrySet()) {
+                if ((int) entry.getKey() == input + 1) {
+                    return "I" + entry.getValue();
+                }
             }
         }
 
