@@ -35,14 +35,9 @@ public class IntegerToRomanNumeralsConverter {
                 return romainRepresentationOf(input);
             } else if (input == mainNumber - chipperNumber) {
                 return appendPrefix(mainNumber, chipperNumber);
+            } else if (input >= mainNumber * 2) {
+                return appendSuffix(mainNumber, mainNumber, input);
             } else if (input >= mainNumber) {
-                if (input == 2000 || input == 3000) {
-                    return appendSuffix(mainNumber, mainNumber, input);
-                } else if (input == 200 || input == 300) {
-                    return appendSuffix(mainNumber, mainNumber, input);
-                } else if (input == 20 || input == 30) {
-                    return appendSuffix(mainNumber, mainNumber, input);
-                }
                 return appendSuffix(mainNumber, chipperNumber, input);
             }
         }
