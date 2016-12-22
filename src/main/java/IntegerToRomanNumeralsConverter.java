@@ -47,9 +47,6 @@ public class IntegerToRomanNumeralsConverter {
         return romainRepresentationOf(chipperNumber) + romainRepresentationOf(mainNumber);
     }
 
-    public String romainRepresentationOf(int mainNumber) {
-        return mapping.get(mainNumber);
-    }
 
     public String appendSuffix(int mainNumber, int chipperNumber, int input) {
         StringBuilder sb = new StringBuilder();
@@ -60,4 +57,7 @@ public class IntegerToRomanNumeralsConverter {
         return sb.toString();
     }
 
+    public String romainRepresentationOf(int mainNumber) {
+        return mapping.get(mainNumber);
+    }
 }
