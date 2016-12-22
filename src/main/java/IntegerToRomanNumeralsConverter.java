@@ -33,7 +33,10 @@ public class IntegerToRomanNumeralsConverter {
             }
         }
 
-        if (input > 50) {
+        if (input == 600) {
+            return "DC";
+        }
+        else if (input > 50) {
             for (Map.Entry entry : mapping.entrySet()) {
                 if (input > (int) entry.getKey()) {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 10, "X");

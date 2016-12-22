@@ -92,5 +92,10 @@ public class IntegerToRomanNumeralsConverterTest {
     public void shouldConvert_400() throws Exception {
         assertEquals("CD", converter.convert(400));
     }
+
+    @Test
+    public void shouldConvert_600() throws Exception {
+        assertEquals("DC", converter.convert(600));
+    }
 }
 
