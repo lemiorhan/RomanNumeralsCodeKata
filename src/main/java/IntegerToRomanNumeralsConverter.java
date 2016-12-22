@@ -34,28 +34,28 @@ public class IntegerToRomanNumeralsConverter {
             if (input == mainNumber) {
                 return romainRepresentationOf(input);
             } else if (input == mainNumber - chipperNumber) {
-                return romainRepresentationOf(chipperNumber) + romainRepresentationOf(mainNumber);
+                return appendPrefix(mainNumber, chipperNumber);
             } else if (input >= mainNumber) {
-                return appendSuffix(input, romainRepresentationOf(mainNumber), mainNumber, chipperNumber, romainRepresentationOf(chipperNumber));
+                return appendSuffix(mainNumber, chipperNumber, input);
             }
         }
 
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < input; i++) {
-            sb.append("I");
-        }
-        return sb.toString();
+        throw new RuntimeException("Unable to convert the given integer to roman numerals");
+    }
+
+    public String appendPrefix(int mainNumber, int chipperNumber) {
+        return romainRepresentationOf(chipperNumber) + romainRepresentationOf(mainNumber);
     }
 
     public String romainRepresentationOf(int mainNumber) {
         return mapping.get(mainNumber);
     }
 
-    public String appendSuffix(int input, String romanNumber, int integerNumber, int chipper, String appenderRomanNumber) {
+    public String appendSuffix(int mainNumber, int chipperNumber, int input) {
         StringBuilder sb = new StringBuilder();
-        sb.append(romanNumber);
-        for (int i = 0; i < (input - integerNumber) / chipper; i++) {
-            sb.append(appenderRomanNumber);
+        sb.append(romainRepresentationOf(mainNumber));
+        for (int i = 0; i < (input - mainNumber) / chipperNumber; i++) {
+            sb.append(romainRepresentationOf(chipperNumber));
         }
         return sb.toString();
     }
