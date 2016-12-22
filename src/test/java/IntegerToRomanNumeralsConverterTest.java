@@ -101,6 +101,11 @@ public class IntegerToRomanNumeralsConverterTest {
     public void shouldConvert_20_30() throws Exception {
         assertEquals("XX", converter.convert(20));
         assertEquals("XXX", converter.convert(30));
+    }
+
+    @Test
+    public void shouldConvert_200() throws Exception {
+        assertEquals("CC", converter.convert(200));
 
     }
 }

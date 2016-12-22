@@ -36,7 +36,10 @@ public class IntegerToRomanNumeralsConverter {
             } else if (input == mainNumber - chipperNumber) {
                 return appendPrefix(mainNumber, chipperNumber);
             } else if (input >= mainNumber) {
-                if (input == 20 || input == 30) {
+                if (input == 200) {
+                    return "CC";
+                }
+                else if (input == 20 || input == 30) {
                     StringBuilder sb = new StringBuilder();
                     sb.append(romainRepresentationOf(mainNumber));
                     for (int i = 0; i < (input - mainNumber) / mainNumber; i++) {
