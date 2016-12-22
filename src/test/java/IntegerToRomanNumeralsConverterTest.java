@@ -44,14 +44,6 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    @Ignore
-    public void shouldConvert_11_12_13() throws Exception {
-        assertEquals("XI", converter.convert(11));
-        assertEquals("XII", converter.convert(12));
-        assertEquals("XIII", converter.convert(13));
-    }
-
-    @Test
     public void shouldConvert_50() throws Exception {
         assertEquals("L", converter.convert(50));
     }
@@ -79,14 +71,6 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    @Ignore
-    public void shouldConvert_110_120_130() throws Exception {
-        assertEquals("CX", converter.convert(110));
-        assertEquals("CXX", converter.convert(120));
-        assertEquals("CXXX", converter.convert(130));
-    }
-
-    @Test
     public void shouldConvert_500() throws Exception {
         assertEquals("D", converter.convert(500));
     }
@@ -106,14 +90,6 @@ public class IntegerToRomanNumeralsConverterTest {
     @Test
     public void shouldConvert_1000() throws Exception {
         assertEquals("M", converter.convert(1000));
-    }
-
-    @Test
-    @Ignore
-    public void shouldConvert_1100_1200_1300() throws Exception {
-        assertEquals("MC", converter.convert(1100));
-        assertEquals("MCC", converter.convert(1200));
-        assertEquals("MCCC", converter.convert(1300));
     }
 
     @Test
