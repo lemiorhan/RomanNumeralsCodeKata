@@ -33,7 +33,7 @@ public class IntegerToRomanNumeralsConverter {
         } else {
             for (Map.Entry entry : mapping.entrySet()) {
                 if (input > (int) entry.getKey()) {
-                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey());
+                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 1, "I");
                 }
             }
         }
@@ -46,11 +46,11 @@ public class IntegerToRomanNumeralsConverter {
         return sb.toString();
     }
 
-    public String appendSuffix(int input, String romanNumber, int integerNumber) {
+    public String appendSuffix(int input, String romanNumber, int integerNumber, int chipper, String appenderRomanNumber) {
         StringBuilder sb = new StringBuilder();
         sb.append(romanNumber);
-        for (int i = 0; i < input - integerNumber / 1; i++) {
-            sb.append("I");
+        for (int i = 0; i < input - integerNumber / chipper; i++) {
+            sb.append(appenderRomanNumber);
         }
         return sb.toString();
     }
