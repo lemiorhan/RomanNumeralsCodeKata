@@ -96,5 +96,11 @@ public class IntegerToRomanNumeralsConverterTest {
     public void shouldConvert_900() throws Exception {
         assertEquals("CM", converter.convert(900));
     }
+
+    @Test
+    public void shouldConvert_20() throws Exception {
+        assertEquals("XX", converter.convert(20));
+
+    }
 }
 
