@@ -33,12 +33,12 @@ public class IntegerToRomanNumeralsConverter {
             }
         }
 
-        if (input == 600) {
-            return "DC";
-        } else if (input == 700) {
-            return "DCC";
-        } else if (input == 800) {
-            return "DCCC";
+        if (input > 500) {
+            for (Map.Entry entry : mapping.entrySet()) {
+                if (input > (int) entry.getKey()) {
+                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 100, "C");
+                }
+            }
         }
         else if (input > 50) {
             for (Map.Entry entry : mapping.entrySet()) {
