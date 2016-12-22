@@ -26,22 +26,16 @@ public class IntegerToRomanNumeralsConverter {
         }
 
         if (input >= 500 - 100) {
-            for (Map.Entry entry : mapping.entrySet()) {
-                if ((int) entry.getKey() == input + 100) {
-                    return mapping.get(100) + entry.getValue();
-                }
+            if (mapping.containsKey(input + 100)) {
+                return mapping.get(100) + mapping.get(input + 100);
             }
         } else if (input >= 50 - 10) {
-            for (Map.Entry entry : mapping.entrySet()) {
-                if ((int) entry.getKey() == input + 10) {
-                    return mapping.get(10) + entry.getValue();
-                }
+            if (mapping.containsKey(input + 10)) {
+                return mapping.get(10) + mapping.get(input + 10);
             }
-        } else if (input >= 5 - 1){
-            for (Map.Entry entry : mapping.entrySet()) {
-                if ((int) entry.getKey() == input + 1) {
-                    return mapping.get(1) + entry.getValue();
-                }
+        } else if (input >= 5 - 1) {
+            if (mapping.containsKey(input + 1)) {
+                return mapping.get(1) + mapping.get(input + 1);
             }
         }
 
