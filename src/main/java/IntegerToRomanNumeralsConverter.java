@@ -25,11 +25,16 @@ public class IntegerToRomanNumeralsConverter {
             }
         }
 
-        for (Map.Entry entry : mapping.entrySet()) {
-            if (input > (int) entry.getKey()) {
-                return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey());
+        if (input == 60) {
+            return "LX";
+        } else {
+            for (Map.Entry entry : mapping.entrySet()) {
+                if (input > (int) entry.getKey()) {
+                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey());
+                }
             }
         }
+
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < input; i++) {

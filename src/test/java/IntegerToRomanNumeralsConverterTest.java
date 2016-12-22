@@ -58,5 +58,11 @@ public class IntegerToRomanNumeralsConverterTest {
     public void shouldConvert_40() throws Exception {
         assertEquals("XL", converter.convert(40));
     }
+
+    @Test
+    public void shouldConvert_60() throws Exception {
+        assertEquals("LX", converter.convert(60));
+
+    }
 }
 
