@@ -60,9 +60,9 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_60() throws Exception {
+    public void shouldConvert_60_70() throws Exception {
         assertEquals("LX", converter.convert(60));
-
+        assertEquals("LXX", converter.convert(70));
     }
 }
 

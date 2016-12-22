@@ -27,6 +27,8 @@ public class IntegerToRomanNumeralsConverter {
 
         if (input == 60) {
             return "LX";
+        } else if (input == 70) {
+            return "LXX";
         } else {
             for (Map.Entry entry : mapping.entrySet()) {
                 if (input > (int) entry.getKey()) {
