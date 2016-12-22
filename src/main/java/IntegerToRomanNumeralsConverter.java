@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -25,12 +24,12 @@ public class IntegerToRomanNumeralsConverter {
             }
         }
 
-        if (input == 60) {
-            return "LX";
-        } else if (input == 70) {
-            return "LXX";
-        } else if (input == 80) {
-            return "LXXX";
+        if (input > 50) {
+            for (Map.Entry entry : mapping.entrySet()) {
+                if (input > (int) entry.getKey()) {
+                    return appendSuffixFor607080(input, (String) entry.getValue(), (int) entry.getKey());
+                }
+            }
         } else {
             for (Map.Entry entry : mapping.entrySet()) {
                 if (input > (int) entry.getKey()) {
@@ -52,6 +51,15 @@ public class IntegerToRomanNumeralsConverter {
         sb.append(romanNumber);
         for (int i = 0; i < input - integerNumber; i++) {
             sb.append("I");
+        }
+        return sb.toString();
+    }
+
+    public String appendSuffixFor607080(int input, String romanNumber, int integerNumber) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(romanNumber);
+        for (int i = 0; i < (input - integerNumber) / 10; i++) {
+            sb.append("X");
         }
         return sb.toString();
     }
