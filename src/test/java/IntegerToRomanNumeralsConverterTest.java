@@ -70,5 +70,10 @@ public class IntegerToRomanNumeralsConverterTest {
     public void shouldConvert_100() throws Exception {
         assertEquals("C", converter.convert(100));
     }
+
+    @Test
+    public void shouldConvert_90() throws Exception {
+        assertEquals("XC", converter.convert(90));
+    }
 }
 

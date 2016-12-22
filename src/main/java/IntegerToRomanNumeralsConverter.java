@@ -17,6 +17,8 @@ public class IntegerToRomanNumeralsConverter {
 
         if (input == 40) {
             return "XL";
+        } else if (input == 90) {
+            return "XC";
         } else {
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 1) {
