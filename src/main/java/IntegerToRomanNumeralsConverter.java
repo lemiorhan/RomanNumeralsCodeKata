@@ -5,6 +5,7 @@ public class IntegerToRomanNumeralsConverter {
     public String convert(int input) {
 
         Map<Integer, String> mapping = new LinkedHashMap<Integer, String>() {{
+            put(1000, "M");
             put(500, "D");
             put(100, "C");
             put(50, "L");
@@ -47,7 +48,7 @@ public class IntegerToRomanNumeralsConverter {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(500), mapping.get(chipper.get(500)));
                 } else if (input > 50) {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(50), mapping.get(chipper.get(50)));
-                } else if (input > 5){
+                } else if (input > 5) {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(5), mapping.get(chipper.get(5)));
                 }
             }

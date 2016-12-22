@@ -99,5 +99,10 @@ public class IntegerToRomanNumeralsConverterTest {
         assertEquals("DCC", converter.convert(700));
         assertEquals("DCCC", converter.convert(800));
     }
+
+    @Test
+    public void shouldConvert_1000() throws Exception {
+        assertEquals("M", converter.convert(1000));
+    }
 }
 
