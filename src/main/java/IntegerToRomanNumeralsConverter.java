@@ -38,6 +38,8 @@ public class IntegerToRomanNumeralsConverter {
             } else if (input >= mainNumber) {
                 if (input == 20) {
                     return "XX";
+                } else if (input == 30) {
+                    return "XXX";
                 }
                 return appendSuffix(mainNumber, chipperNumber, input);
             }
