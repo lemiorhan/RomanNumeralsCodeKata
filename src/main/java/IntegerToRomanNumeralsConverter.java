@@ -39,7 +39,7 @@ public class IntegerToRomanNumeralsConverter {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 100, "C");
                 } else if (input > 50) {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 10, "X");
-                } else {
+                } else if (input > 5){
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 1, "I");
                 }
             }
