@@ -108,5 +108,10 @@ public class IntegerToRomanNumeralsConverterTest {
         assertEquals("CC", converter.convert(200));
         assertEquals("CCC", converter.convert(300));
     }
+
+    @Test
+    public void shouldConvert_2000() throws Exception {
+        assertEquals("MM", converter.convert(2000));
+    }
 }
 
