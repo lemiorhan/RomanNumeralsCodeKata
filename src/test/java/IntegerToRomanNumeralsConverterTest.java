@@ -120,5 +120,12 @@ public class IntegerToRomanNumeralsConverterTest {
         assertEquals("LIV", converter.convert(54));
         assertEquals("LXXXII", converter.convert(82));
     }
+
+    @Test
+    public void shouldConvert_99_199_2999() throws Exception {
+        assertEquals("XCIX", converter.convert(99));
+        assertEquals("CXCIX", converter.convert(199));
+        assertEquals("MMCMXCIX", converter.convert(2999));
+    }
 }
 
