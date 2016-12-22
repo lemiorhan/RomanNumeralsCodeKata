@@ -77,8 +77,9 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_110() throws Exception {
+    public void shouldConvert_110_120() throws Exception {
         assertEquals("CX", converter.convert(110));
+        assertEquals("CXX", converter.convert(120));
     }
 }
 
