@@ -94,8 +94,9 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_600() throws Exception {
+    public void shouldConvert_600_700() throws Exception {
         assertEquals("DC", converter.convert(600));
+        assertEquals("DCC", converter.convert(700));
     }
 }
 
