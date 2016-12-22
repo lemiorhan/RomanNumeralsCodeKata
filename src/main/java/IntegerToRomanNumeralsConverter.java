@@ -38,6 +38,8 @@ public class IntegerToRomanNumeralsConverter {
             } else if (input >= mainNumber) {
                 if (input == 200) {
                     return "CC";
+                } else if (input == 300) {
+                    return "CCC";
                 }
                 else if (input == 20 || input == 30) {
                     StringBuilder sb = new StringBuilder();

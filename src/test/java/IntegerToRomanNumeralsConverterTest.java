@@ -104,9 +104,9 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_200() throws Exception {
+    public void shouldConvert_300() throws Exception {
         assertEquals("CC", converter.convert(200));
-
+        assertEquals("CCC", converter.convert(300));
     }
 }
 
