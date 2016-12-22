@@ -38,6 +38,8 @@ public class IntegerToRomanNumeralsConverter {
             } else if (input >= mainNumber) {
                 if (input == 2000) {
                     return "MM";
+                }else if (input == 3000) {
+                    return "MMM";
                 } else if (input == 200 || input == 300) {
                     StringBuilder sb = new StringBuilder();
                     sb.append(romainRepresentationOf(mainNumber));

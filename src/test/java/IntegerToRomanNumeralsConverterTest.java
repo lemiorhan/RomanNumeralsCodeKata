@@ -104,14 +104,15 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_300() throws Exception {
+    public void shouldConvert_200_300() throws Exception {
         assertEquals("CC", converter.convert(200));
         assertEquals("CCC", converter.convert(300));
     }
 
     @Test
-    public void shouldConvert_2000() throws Exception {
+    public void shouldConvert_2000_3000() throws Exception {
         assertEquals("MM", converter.convert(2000));
+        assertEquals("MMM", converter.convert(3000));
     }
 }
 
