@@ -36,10 +36,13 @@ public class IntegerToRomanNumeralsConverter {
             } else if (input == mainNumber - chipperNumber) {
                 return appendPrefix(mainNumber, chipperNumber);
             } else if (input >= mainNumber) {
-                if (input == 2000) {
-                    return "MM";
-                }else if (input == 3000) {
-                    return "MMM";
+                if (input == 2000 || input == 3000) {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(romainRepresentationOf(mainNumber));
+                    for (int i = 0; i < (input - mainNumber) / mainNumber; i++) {
+                        sb.append(romainRepresentationOf(mainNumber));
+                    }
+                    return sb.toString();
                 } else if (input == 200 || input == 300) {
                     StringBuilder sb = new StringBuilder();
                     sb.append(romainRepresentationOf(mainNumber));
