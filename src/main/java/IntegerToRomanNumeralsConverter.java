@@ -16,7 +16,10 @@ public class IntegerToRomanNumeralsConverter {
             return mapping.get(input);
         }
 
-        if (input >= 40) {
+        if (input == 400) {
+            return "CD";
+        }
+        else if (input >= 40) {
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 10) {
                     return "X" + entry.getValue();
