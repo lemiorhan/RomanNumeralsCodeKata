@@ -15,10 +15,12 @@ public class IntegerToRomanNumeralsConverter {
             return mapping.get(input);
         }
 
-        if (input == 40) {
-            return "XL";
-        } else if (input == 90) {
-            return "XC";
+        if (input >= 40) {
+            for (Map.Entry entry : mapping.entrySet()) {
+                if ((int) entry.getKey() == input + 10) {
+                    return "X" + entry.getValue();
+                }
+            }
         } else {
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 1) {
