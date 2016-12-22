@@ -27,7 +27,7 @@ public class IntegerToRomanNumeralsConverter {
         if (input > 50) {
             for (Map.Entry entry : mapping.entrySet()) {
                 if (input > (int) entry.getKey()) {
-                    return appendSuffixFor607080(input, (String) entry.getValue(), (int) entry.getKey());
+                    return appendSuffixFor607080(input, (String) entry.getValue(), (int) entry.getKey(), 10, "X");
                 }
             }
         } else {
@@ -55,11 +55,11 @@ public class IntegerToRomanNumeralsConverter {
         return sb.toString();
     }
 
-    public String appendSuffixFor607080(int input, String romanNumber, int integerNumber) {
+    public String appendSuffixFor607080(int input, String romanNumber, int integerNumber, int chipper, String appenderRomanNumber) {
         StringBuilder sb = new StringBuilder();
         sb.append(romanNumber);
-        for (int i = 0; i < (input - integerNumber) / 10; i++) {
-            sb.append("X");
+        for (int i = 0; i < (input - integerNumber) / chipper; i++) {
+            sb.append(appenderRomanNumber);
         }
         return sb.toString();
     }
