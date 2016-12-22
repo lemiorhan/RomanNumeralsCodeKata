@@ -116,8 +116,9 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_54() throws Exception {
+    public void shouldConvert_54_82() throws Exception {
         assertEquals("LIV", converter.convert(54));
+        assertEquals("LXXXII", converter.convert(82));
     }
 }
 
