@@ -28,19 +28,19 @@ public class IntegerToRomanNumeralsConverter {
         if (input >= 500 - 100) {
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 100) {
-                    return "C" + entry.getValue();
+                    return mapping.get(100) + entry.getValue();
                 }
             }
         } else if (input >= 50 - 10) {
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 10) {
-                    return "X" + entry.getValue();
+                    return mapping.get(10) + entry.getValue();
                 }
             }
         } else if (input >= 5 - 1){
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 1) {
-                    return "I" + entry.getValue();
+                    return mapping.get(1) + entry.getValue();
                 }
             }
         }
