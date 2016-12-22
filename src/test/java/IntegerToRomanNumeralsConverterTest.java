@@ -111,5 +111,10 @@ public class IntegerToRomanNumeralsConverterTest {
         assertEquals("MCC", converter.convert(1200));
         assertEquals("MCCC", converter.convert(1300));
     }
+
+    @Test
+    public void shouldConvert_900() throws Exception {
+        assertEquals("CM", converter.convert(900));
+    }
 }
 
