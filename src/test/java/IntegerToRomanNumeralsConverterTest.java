@@ -106,10 +106,10 @@ public class IntegerToRomanNumeralsConverterTest {
     }
 
     @Test
-    public void shouldConvert_1100() throws Exception {
+    public void shouldConvert_1100_1200_1300() throws Exception {
         assertEquals("MC", converter.convert(1100));
         assertEquals("MCC", converter.convert(1200));
-
+        assertEquals("MCCC", converter.convert(1300));
     }
 }
 
