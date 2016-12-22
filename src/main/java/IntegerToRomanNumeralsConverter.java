@@ -26,16 +26,19 @@ public class IntegerToRomanNumeralsConverter {
         }
 
         if (input >= 500 - 100) {
-            if (mapping.containsKey(input + 100)) {
-                return mapping.get(100) + mapping.get(input + 100);
+            int chipperNumber = chipper.get(500);
+            if (mapping.containsKey(input + chipperNumber)) {
+                return mapping.get(chipperNumber) + mapping.get(input + chipperNumber);
             }
         } else if (input >= 50 - 10) {
-            if (mapping.containsKey(input + 10)) {
-                return mapping.get(10) + mapping.get(input + 10);
+            int chipperNumber = chipper.get(10);
+            if (mapping.containsKey(input + chipperNumber)) {
+                return mapping.get(chipperNumber) + mapping.get(input + chipperNumber);
             }
         } else if (input >= 5 - 1) {
-            if (mapping.containsKey(input + 1)) {
-                return mapping.get(1) + mapping.get(input + 1);
+            int chipperNumber = chipper.get(1);
+            if (mapping.containsKey(input + chipperNumber)) {
+                return mapping.get(chipperNumber) + mapping.get(input + chipperNumber);
             }
         }
 
