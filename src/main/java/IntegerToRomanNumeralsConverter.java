@@ -2,9 +2,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class IntegerToRomanNumeralsConverter {
+
+    private Map<Integer, String> mapping;
+
     public String convert(int input) {
 
-        Map<Integer, String> mapping = new LinkedHashMap<Integer, String>() {{
+        mapping = new LinkedHashMap<Integer, String>() {{
             put(1000, "M");
             put(500, "D");
             put(100, "C");
@@ -29,11 +32,11 @@ public class IntegerToRomanNumeralsConverter {
             int chipperNumber = chipper.get(mainNumber);
 
             if (input == mainNumber) {
-                return mapping.get(input);
+                return romainRepresentationOf(input);
             } else if (input == mainNumber - chipperNumber) {
-                return mapping.get(chipperNumber) + mapping.get(mainNumber);
+                return romainRepresentationOf(chipperNumber) + romainRepresentationOf(mainNumber);
             } else if (input >= mainNumber) {
-                return appendSuffix(input, (String) entry.getValue(), mainNumber, chipperNumber, mapping.get(chipperNumber));
+                return appendSuffix(input, romainRepresentationOf(mainNumber), mainNumber, chipperNumber, romainRepresentationOf(chipperNumber));
             }
         }
 
@@ -42,6 +45,10 @@ public class IntegerToRomanNumeralsConverter {
             sb.append("I");
         }
         return sb.toString();
+    }
+
+    public String romainRepresentationOf(int mainNumber) {
+        return mapping.get(mainNumber);
     }
 
     public String appendSuffix(int input, String romanNumber, int integerNumber, int chipper, String appenderRomanNumber) {
