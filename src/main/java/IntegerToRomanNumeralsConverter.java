@@ -37,6 +37,8 @@ public class IntegerToRomanNumeralsConverter {
             return "DC";
         } else if (input == 700) {
             return "DCC";
+        } else if (input == 800) {
+            return "DCCC";
         }
         else if (input > 50) {
             for (Map.Entry entry : mapping.entrySet()) {
