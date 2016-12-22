@@ -10,7 +10,15 @@ public class IntegerToRomanNumeralsConverter {
             put(50, "L");
             put(10, "X");
             put(5, "V");
+            put(1, "I");
         }};
+
+        Map<Integer, Integer> chipper = new LinkedHashMap<Integer, Integer>() {{
+            put(500, 100);
+            put(50, 10);
+            put(5, 1);
+        }};
+
 
         if (mapping.containsKey(input)) {
             return mapping.get(input);
@@ -36,11 +44,11 @@ public class IntegerToRomanNumeralsConverter {
         for (Map.Entry entry : mapping.entrySet()) {
             if (input > (int) entry.getKey()) {
                 if (input > 500) {
-                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 100, "C");
+                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(500), mapping.get(chipper.get(500)));
                 } else if (input > 50) {
-                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 10, "X");
+                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(50), mapping.get(chipper.get(50)));
                 } else if (input > 5){
-                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 1, "I");
+                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(5), mapping.get(chipper.get(5)));
                 }
             }
         }
