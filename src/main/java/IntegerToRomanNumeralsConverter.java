@@ -25,10 +25,12 @@ public class IntegerToRomanNumeralsConverter {
             return mapping.get(input);
         }
 
-        if (input == 400) {
-            return "CD";
-        } else if (input == 900) {
-            return "CM";
+        if (input >= 400) {
+            for (Map.Entry entry : mapping.entrySet()) {
+                if ((int) entry.getKey() == input + 100) {
+                    return "C" + entry.getValue();
+                }
+            }
         } else if (input >= 40) {
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 10) {
