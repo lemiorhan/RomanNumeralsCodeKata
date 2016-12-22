@@ -65,5 +65,10 @@ public class IntegerToRomanNumeralsConverterTest {
         assertEquals("LXX", converter.convert(70));
         assertEquals("LXXX", converter.convert(80));
     }
+
+    @Test
+    public void shouldConvert_100() throws Exception {
+        assertEquals("C", converter.convert(100));
+    }
 }
 

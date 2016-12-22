@@ -5,6 +5,7 @@ public class IntegerToRomanNumeralsConverter {
     public String convert(int input) {
 
         Map<Integer, String> mapping = new LinkedHashMap<Integer, String>() {{
+            put(100, "C");
             put(50, "L");
             put(10, "X");
             put(5, "V");
