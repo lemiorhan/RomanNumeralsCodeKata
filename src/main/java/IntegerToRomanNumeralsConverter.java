@@ -23,7 +23,7 @@ public class IntegerToRomanNumeralsConverter {
             put(5, 1);
             put(1, 1);
         }};
-        
+
         for (Map.Entry entry : mapping.entrySet()) {
             int mainNumber = (int) entry.getKey();
             int chipperNumber = chipper.get(mainNumber);
@@ -32,21 +32,10 @@ public class IntegerToRomanNumeralsConverter {
                 return mapping.get(input);
             } else if (input == mainNumber - chipperNumber) {
                 return mapping.get(chipperNumber) + mapping.get(mainNumber);
+            } else if (input >= mainNumber) {
+                return appendSuffix(input, (String) entry.getValue(), mainNumber, chipperNumber, mapping.get(chipperNumber));
             }
         }
-
-        for (Map.Entry entry : mapping.entrySet()) {
-            if (input > (int) entry.getKey()) {
-                if (input > 500) {
-                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(500), mapping.get(chipper.get(500)));
-                } else if (input > 50) {
-                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(50), mapping.get(chipper.get(50)));
-                } else if (input > 5) {
-                    return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), chipper.get(5), mapping.get(chipper.get(5)));
-                }
-            }
-        }
-
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < input; i++) {
