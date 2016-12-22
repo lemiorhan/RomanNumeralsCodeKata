@@ -6,6 +6,7 @@ public class IntegerToRomanNumeralsConverter {
     public String convert(int input) {
 
         Map<Integer, String> mapping = new LinkedHashMap<Integer, String>() {{
+            put(50, "L");
             put(10, "X");
             put(5, "V");
         }};
@@ -13,7 +14,6 @@ public class IntegerToRomanNumeralsConverter {
         if (mapping.containsKey(input)) {
             return mapping.get(input);
         }
-
 
         for (Map.Entry entry : mapping.entrySet()) {
             if ((int) entry.getKey() == input + 1) {
