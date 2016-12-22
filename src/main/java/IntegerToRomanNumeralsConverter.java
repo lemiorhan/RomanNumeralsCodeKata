@@ -37,26 +37,11 @@ public class IntegerToRomanNumeralsConverter {
                 return appendPrefix(mainNumber, chipperNumber);
             } else if (input >= mainNumber) {
                 if (input == 2000 || input == 3000) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(romainRepresentationOf(mainNumber));
-                    for (int i = 0; i < (input - mainNumber) / mainNumber; i++) {
-                        sb.append(romainRepresentationOf(mainNumber));
-                    }
-                    return sb.toString();
+                    return appendSuffix(mainNumber, mainNumber, input);
                 } else if (input == 200 || input == 300) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(romainRepresentationOf(mainNumber));
-                    for (int i = 0; i < (input - mainNumber) / mainNumber; i++) {
-                        sb.append(romainRepresentationOf(mainNumber));
-                    }
-                    return sb.toString();
+                    return appendSuffix(mainNumber, mainNumber, input);
                 } else if (input == 20 || input == 30) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(romainRepresentationOf(mainNumber));
-                    for (int i = 0; i < (input - mainNumber) / mainNumber; i++) {
-                        sb.append(romainRepresentationOf(mainNumber));
-                    }
-                    return sb.toString();
+                    return appendSuffix(mainNumber, mainNumber, input);
                 }
                 return appendSuffix(mainNumber, chipperNumber, input);
             }
@@ -70,11 +55,11 @@ public class IntegerToRomanNumeralsConverter {
     }
 
 
-    public String appendSuffix(int mainNumber, int chipperNumber, int input) {
+    public String appendSuffix(int mainNumber, int suffixNumber, int input) {
         StringBuilder sb = new StringBuilder();
         sb.append(romainRepresentationOf(mainNumber));
-        for (int i = 0; i < (input - mainNumber) / chipperNumber; i++) {
-            sb.append(romainRepresentationOf(chipperNumber));
+        for (int i = 0; i < (input - mainNumber) / suffixNumber; i++) {
+            sb.append(romainRepresentationOf(suffixNumber));
         }
         return sb.toString();
     }
