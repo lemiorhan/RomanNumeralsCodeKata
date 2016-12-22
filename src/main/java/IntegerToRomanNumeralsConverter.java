@@ -23,17 +23,14 @@ public class IntegerToRomanNumeralsConverter {
             put(5, 1);
             put(1, 1);
         }};
-
-
-        if (mapping.containsKey(input)) {
-            return mapping.get(input);
-        }
-
+        
         for (Map.Entry entry : mapping.entrySet()) {
             int mainNumber = (int) entry.getKey();
             int chipperNumber = chipper.get(mainNumber);
 
-            if (input == mainNumber - chipperNumber) {
+            if (input == mainNumber) {
+                return mapping.get(input);
+            } else if (input == mainNumber - chipperNumber) {
                 return mapping.get(chipperNumber) + mapping.get(mainNumber);
             }
         }
