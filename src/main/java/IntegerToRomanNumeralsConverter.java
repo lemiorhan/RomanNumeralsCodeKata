@@ -49,7 +49,7 @@ public class IntegerToRomanNumeralsConverter {
     public String appendSuffix(int input, String romanNumber, int integerNumber) {
         StringBuilder sb = new StringBuilder();
         sb.append(romanNumber);
-        for (int i = 0; i < input - integerNumber; i++) {
+        for (int i = 0; i < input - integerNumber / 1; i++) {
             sb.append("I");
         }
         return sb.toString();
