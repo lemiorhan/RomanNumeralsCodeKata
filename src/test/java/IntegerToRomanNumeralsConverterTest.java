@@ -114,5 +114,10 @@ public class IntegerToRomanNumeralsConverterTest {
         assertEquals("MM", converter.convert(2000));
         assertEquals("MMM", converter.convert(3000));
     }
+
+    @Test
+    public void shouldConvert_54() throws Exception {
+        assertEquals("LIV", converter.convert(54));
+    }
 }
 

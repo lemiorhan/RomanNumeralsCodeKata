@@ -24,6 +24,14 @@ public class IntegerToRomanNumeralsConverter {
     }};
 
     public String convert(int input) {
+        StringBuilder sb = new StringBuilder();
+        for (Integer digit : DecimalDigitsSplitter.split(input)) {
+            if (digit != 0) sb.append(convertDigit(digit));
+        }
+        return sb.toString();
+    }
+
+    public String convertDigit(int input) {
 
         for (Map.Entry entry : romanNumberMapping.entrySet()) {
             int mainNumber = (int) entry.getKey();
