@@ -18,8 +18,7 @@ public class IntegerToRomanNumeralsConverter {
 
         if (input == 400) {
             return "CD";
-        }
-        else if (input >= 40) {
+        } else if (input >= 40) {
             for (Map.Entry entry : mapping.entrySet()) {
                 if ((int) entry.getKey() == input + 10) {
                     return "X" + entry.getValue();
@@ -33,22 +32,14 @@ public class IntegerToRomanNumeralsConverter {
             }
         }
 
-        if (input > 500) {
-            for (Map.Entry entry : mapping.entrySet()) {
-                if (input > (int) entry.getKey()) {
+
+        for (Map.Entry entry : mapping.entrySet()) {
+            if (input > (int) entry.getKey()) {
+                if (input > 500) {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 100, "C");
-                }
-            }
-        }
-        else if (input > 50) {
-            for (Map.Entry entry : mapping.entrySet()) {
-                if (input > (int) entry.getKey()) {
+                } else if (input > 50) {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 10, "X");
-                }
-            }
-        } else {
-            for (Map.Entry entry : mapping.entrySet()) {
-                if (input > (int) entry.getKey()) {
+                } else {
                     return appendSuffix(input, (String) entry.getValue(), (int) entry.getKey(), 1, "I");
                 }
             }
