@@ -3,33 +3,31 @@ import java.util.Map;
 
 public class IntegerToRomanNumeralsConverter {
 
-    private Map<Integer, String> mapping;
+    private Map<Integer, String> romanNumberMapping = new LinkedHashMap<Integer, String>() {{
+        put(1000, "M");
+        put(500, "D");
+        put(100, "C");
+        put(50, "L");
+        put(10, "X");
+        put(5, "V");
+        put(1, "I");
+    }};
+
+    private Map<Integer, Integer> chipperMapping = new LinkedHashMap<Integer, Integer>() {{
+        put(1000, 100);
+        put(500, 100);
+        put(100, 10);
+        put(50, 10);
+        put(10, 1);
+        put(5, 1);
+        put(1, 1);
+    }};
 
     public String convert(int input) {
 
-        mapping = new LinkedHashMap<Integer, String>() {{
-            put(1000, "M");
-            put(500, "D");
-            put(100, "C");
-            put(50, "L");
-            put(10, "X");
-            put(5, "V");
-            put(1, "I");
-        }};
-
-        Map<Integer, Integer> chipper = new LinkedHashMap<Integer, Integer>() {{
-            put(1000, 100);
-            put(500, 100);
-            put(100, 10);
-            put(50, 10);
-            put(10, 1);
-            put(5, 1);
-            put(1, 1);
-        }};
-
-        for (Map.Entry entry : mapping.entrySet()) {
+        for (Map.Entry entry : romanNumberMapping.entrySet()) {
             int mainNumber = (int) entry.getKey();
-            int chipperNumber = chipper.get(mainNumber);
+            int chipperNumber = chipperMapping.get(mainNumber);
 
             if (input == mainNumber) {
                 return romainRepresentationOf(input);
@@ -49,7 +47,6 @@ public class IntegerToRomanNumeralsConverter {
         return romainRepresentationOf(chipperNumber) + romainRepresentationOf(mainNumber);
     }
 
-
     public String appendSuffix(int mainNumber, int suffixNumber, int input) {
         StringBuilder sb = new StringBuilder();
         sb.append(romainRepresentationOf(mainNumber));
@@ -60,6 +57,6 @@ public class IntegerToRomanNumeralsConverter {
     }
 
     public String romainRepresentationOf(int mainNumber) {
-        return mapping.get(mainNumber);
+        return romanNumberMapping.get(mainNumber);
     }
 }
