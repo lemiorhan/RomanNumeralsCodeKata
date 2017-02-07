@@ -1,10 +1,10 @@
-# Roman Numerals to Integer Converter TDD Code Kata
+# Integer to Roman Numerals Converter TDD Code Kata
 
 **This is my second attempt for this code kata. The output is totally different, that's fascinating! You can check the code and commits of both master (the first attempt) and secondAttemp branches.**
 
 This is the code kata I use in some of my coder dojos and trainings. The rules of the problem is as follows:
 
-**We should convert Roman Numerals to integers.**
+**We should convert integers to Roman Numerals.**
 * 1, 2 and 3 become I, II and III respectively.
 * 5 and 10 become V and X respectively.
 * 6 become VI, as symbols are additive.
