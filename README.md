@@ -4,6 +4,8 @@
 
 This is the code kata I use in some of my coder dojos and trainings. The rules of the problem is as follows:
 
+## RULES 
+
 **We should convert integers to Roman Numerals.**
 * 1, 2 and 3 become I, II and III respectively.
 * 5 and 10 become V and X respectively.
@@ -32,3 +34,12 @@ This is the code kata I use in some of my coder dojos and trainings. The rules o
 - 1 - I
 
 You can check the commits and the diffs to identify how TDD evolves the code from scratch.
+
+## ADDITIONAL RULES FOR THE KATA
+
+* Only one character roman numbers can be kept in a map. 
+* Code coverage should be 100%.
+* Your code should contain answers of these following questions:
+     * how to determine adding specific single character
+     * how to determine adding multiple characters having a prefix, like IV or XC.
+     * how to determine adding multiple characters having suffixes, like XIII or CX.
